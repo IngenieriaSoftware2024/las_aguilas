@@ -44,7 +44,11 @@ class ActiveRecord {
         }
         return $resultado;
     }
-
+    // OBTEENER BD
+    public static function getDB(): PDO
+    {
+        return self::$db;
+    }
     public static function all() {
         $query = "SELECT * FROM " . static::$tabla;
         $resultado = self::consultarSQL($query);
