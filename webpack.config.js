@@ -5,6 +5,11 @@ module.exports = {
   entry: {
     'js/app' : './src/js/app.js',
     'js/inicio' : './src/js/inicio.js',
+    'js/empleado/index' : './src/js/empleado/index.js',
+    'js/empleado/datatable' : './src/js/empleado/datatable.js',
+    'js/empleado/registro' : './src/js/empleado/registro.js',
+    'js/empleado/lista' : './src/js/empleado/lista.js',
+    'js/perfil/gestionar' : './src/js/perfil/gestionar.js',
     'js/clientes/clientes' : './src/js/clientes/clientes.js',
     'js/facturas/facturas' : './src/js/facturas/facturas.js',
   },
