@@ -273,6 +273,9 @@ const llenarDatos = (e) => {
     BtnModificar.parentElement.classList.remove('d-none');
     BtnCancelar.parentElement.classList.remove('d-none');
     BtnMostrar.parentElement.classList.add('d-none');
+
+    document.getElementById('cliente_nit').disabled = true;
+    document.getElementById('cliente_contrato').disabled = true;
 };
 
 const Modificar = async (e) => {
@@ -314,6 +317,9 @@ const Modificar = async (e) => {
                     text: 'custom-text-class'
                 }
             });
+            document.getElementById('cliente_nit').disabled = false;
+            document.getElementById('cliente_contrato').disabled = false;
+            
             inicializarEstado();
             formulario.reset();
             MostrarDatos();
@@ -438,6 +444,7 @@ document.getElementById('cliente_contrato').addEventListener('change', function 
     const NombrePDF = this.files[0] ? this.files[0].name : 'Seleccionar archivo...';
     document.querySelector('.form-control').placeholder = NombrePDF;
 });
+
 
 BtnVolver.addEventListener('click', VolverAlFormulario);
 BtnMostrar.addEventListener('click', MostrarDatos);
