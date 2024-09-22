@@ -1,3 +1,5 @@
+CREATE DATABASE forma_b_alumnos;
+
 create table clientes (
     cliente_id SERIAL PRIMARY KEY,
     cliente_nombre VARCHAR(100),
