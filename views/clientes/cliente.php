@@ -38,16 +38,23 @@
                 <input type="file" name="cliente_contrato" id="cliente_contrato" class="form-control" accept=".pdf">
             </div>
         </div>
-        <div class="row p-1">
-            <div class="col">
-                <button type="submit" id="BtnEnviar" class="btn btn-primary w-100 ">
+        <div class="row p-1 justify-content-center">
+            <div class="col-auto">
+                <button type="submit" id="BtnEnviar" class="btn btn-primary">
                     Registrar Cliente
                 </button>
             </div>
-            <div class="col">
-                <button type="button" id="BtnMostrar" class="btn btn-success w-100">Ver Clientes Ingresados</button>
+            <div class="col-auto">
+                <button type="button" id="BtnMostrar" class="btn btn-success">Ver Clientes Ingresados</button>
+            </div>
+            <div class="col-auto">
+                <button type="button" id="BtnModificar" class="btn btn-warning text-uppercase shadow border-0">Modificar</button>
+            </div>
+            <div class="col-auto">
+                <button type="button" id="BtnCancelar" class="btn btn-secondary text-uppercase shadow border-0">Cancelar</button>
             </div>
         </div>
+
     </form>
 </div>
 <div class="row justify-content-center d-none" id="tabla-clientes-container">

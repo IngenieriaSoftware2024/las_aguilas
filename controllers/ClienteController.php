@@ -138,4 +138,38 @@ class ClienteController
             ], 500);
         }
     }
+
+
+    public static function modificarAPI()
+    {
+
+        try {
+            $cliente_nombre = htmlspecialchars($_POST['cliente_nombre']);
+            $cliente_propietario = htmlspecialchars($_POST['cliente_propietario']);
+            $cliente_telefono = filter_var($_POST['cliente_telefono'], FILTER_VALIDATE_INT);
+            $cliente_email = filter_var($_POST['cliente_email'], FILTER_VALIDATE_EMAIL);
+            $cliente_ubicacion = $_POST['cliente_ubicacion'];
+            $id = filter_var($_POST['cliente_id'], FILTER_SANITIZE_NUMBER_INT);
+
+            
+            $sql = "UPDATE clientes SET cliente_nombre = '$cliente_nombre', cliente_propietario = '$cliente_propietario', cliente_telefono = $cliente_telefono, cliente_email = '$cliente_email', cliente_ubicacion = '$cliente_ubicacion' WHERE cliente_id = $id";
+
+            $modficar = Cliente::EjectuarQuery($sql);
+
+
+            http_response_code(200);
+            echo json_encode([
+                'codigo' => 3,
+                'mensaje' => 'Cliente modificado exitosamente',
+                'detalle' => $modficar
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Error al modificar clientes',
+                'detalle' => $e->getMessage(),
+            ]);
+        }
+    }
 }

@@ -165,7 +165,7 @@ class ActiveRecord {
     // Eliminar un registro - Toma el ID de Active Record
     public function eliminar() {
         $idQuery = static::$idTabla ?? 'id';
-        $query = "DELETE FROM "  . static::$tabla . " WHERE $idQuery = " . self::$db->quote($this->id);
+        $query = "DELETE FROM "  . static::$tabla . " WHERE $idQuery = " . self::$db->quote($this->$idQuery);
         $resultado = self::$db->exec($query);
         return $resultado;
     }
@@ -197,7 +197,11 @@ class ActiveRecord {
         return $data;
     }
 
-        
+    public static function EjectuarQuery($query) {
+        $resultado = self::$db->exec($query);
+        return $resultado; 
+    }
+    
     public static function fetchFirst($query){
         $resultado = self::$db->query($query);
         $respuesta = $resultado->fetchAll(PDO::FETCH_ASSOC);
@@ -251,4 +255,6 @@ class ActiveRecord {
             }
         }
     }
+
+
 }
