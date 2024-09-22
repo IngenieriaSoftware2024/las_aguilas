@@ -10,7 +10,7 @@ module.exports = {
     'js/empleado/registro' : './src/js/empleado/registro.js',
     'js/empleado/lista' : './src/js/empleado/lista.js',
     'js/perfil/gestionar' : './src/js/perfil/gestionar.js',
-
+    'js/clientes/clientes' : './src/js/clientes/clientes.js',
   },
   output: {
     filename: '[name].js',
