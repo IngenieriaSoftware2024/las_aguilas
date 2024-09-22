@@ -13,11 +13,14 @@ const tablaClientesContainer = document.getElementById('tabla-clientes-container
 const BtnModificar = document.getElementById('BtnModificar');
 const BtnCancelar = document.getElementById('BtnCancelar');
 
-BtnModificar.parentElement.classList.add('d-none');
-BtnCancelar.parentElement.classList.add('d-none');
-tablaClientesContainer.classList.add('d-none');
 
-
+const inicializarEstado = () => {
+    BtnEnviar.parentElement.classList.remove('d-none');
+    BtnModificar.parentElement.classList.add('d-none');
+    BtnCancelar.parentElement.classList.add('d-none');
+    BtnMostrar.parentElement.classList.remove('d-none');
+    tablaClientesContainer.classList.add('d-none');
+};
 const GuardarClientes = async (e) => {
     e.preventDefault();
     BtnEnviar.disabled = true;
@@ -251,17 +254,12 @@ const BuscarContrato = async (nit) => {
     }
 };
 
-datatable.on('click', '.ver-contrato', BuscarContrato)
 
 const llenarDatos = (e) => {
-    BtnEnviar.parentElement.classList.add('d-none');
-    BtnModificar.parentElement.classList.remove('d-none');
-    BtnCancelar.parentElement.classList.remove('d-none');
-    BtnMostrar.parentElement.classList.add('d-none')
     const elemento = e.currentTarget.dataset;
-
+    
     VolverAlFormulario();
-
+    
     formulario.cliente_id.value = elemento.clienteId; 
     formulario.cliente_nombre.value = elemento.clienteNombre;
     formulario.cliente_propietario.value = elemento.clientePropietario;
@@ -269,14 +267,17 @@ const llenarDatos = (e) => {
     formulario.cliente_telefono.value = elemento.clienteTelefono;
     formulario.cliente_email.value = elemento.clienteEmail;
     formulario.cliente_ubicacion.value = elemento.clienteUbicacion;
-
-    document.getElementById('cliente_contrato').disabled = true;
-    document.getElementById('cliente_nit').disabled = true;
+    
+    
+    BtnEnviar.parentElement.classList.add('d-none');
+    BtnModificar.parentElement.classList.remove('d-none');
+    BtnCancelar.parentElement.classList.remove('d-none');
+    BtnMostrar.parentElement.classList.add('d-none');
 };
 
 const Modificar = async (e) => {
     e.preventDefault();
-
+    
     if (!validarFormulario(formulario, ['cliente_contrato'])) {
         Swal.fire({
             title: "Campos vacíos",
@@ -285,20 +286,20 @@ const Modificar = async (e) => {
         });
         return;
     }
-
+    
     try {
         const body = new FormData(formulario);
         const url = '/las_aguilas/API/cliente/modificar';
-
+        
         const config = {
             method: 'POST',
             body
         };
-
+        
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
         const { codigo, mensaje } = data;
-
+        
         if (codigo === 3) {
             Swal.fire({
                 title: '¡Éxito!',
@@ -313,8 +314,7 @@ const Modificar = async (e) => {
                     text: 'custom-text-class'
                 }
             });
-            document.getElementById('cliente_contrato').disabled = false;
-            document.getElementById('cliente_nit').disabled = false;
+            inicializarEstado();
             formulario.reset();
             MostrarDatos();
         } else {
@@ -337,11 +337,83 @@ const Modificar = async (e) => {
     }
 };
 
+const Eliminar = async (e) => {
+    const id = e.currentTarget.dataset.id;
+
+    let confirmacion = await Swal.fire({
+        title: '¿Está seguro de que desea eliminar este producto?',
+        text: "Esta acción es irreversible.",
+        icon: 'warning',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Sí, eliminar',
+        denyButtonText: 'No, cancelar',
+        confirmButtonColor: '#3085d6',
+        denyButtonColor: '#d33',
+        background: '#fff3e0',
+        customClass: {
+            title: 'custom-title-class',
+            text: 'custom-text-class',
+            confirmButton: 'custom-confirm-button',
+            denyButton: 'custom-deny-button'
+        }
+    });
+
+    if (confirmacion.isConfirmed) {
+        try {
+            const body = new FormData();
+            body.append('id', id);
+
+            const url = '/las_aguilas/API/cliente/eliminar';
+            const config = {
+                method: 'POST',
+                body
+            };
+
+            const respuesta = await fetch(url, config);
+            const data = await respuesta.json();
+            const { codigo, mensaje } = data;
+
+            if (codigo === 4) {
+                Swal.fire({
+                    title: '¡Éxito!',
+                    text: mensaje,
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    background: '#e0f7fa',
+                    customClass: {
+                        title: 'custom-title-class',
+                        text: 'custom-text-class'
+                    }
+                });
+                formulario.reset();
+                Buscar();
+            } else {
+                Swal.fire({
+                    title: '¡Error!',
+                    text: mensaje,
+                    icon: 'error',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    timerProgressBar: true,
+                    background: '#e0f7fa',
+                    customClass: {
+                        title: 'custom-title-class',
+                        text: 'custom-text-class'
+                    }
+                });
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+};
+
+
 const Cancelar = () => {
-    BtnEnviar.parentElement.classList.remove('d-none');
-    BtnModificar.parentElement.classList.add('d-none');
-    BtnCancelar.parentElement.classList.add('d-none');
-    BtnMostrar.parentElement.classList.remove('d-none');
+    inicializarEstado();
     formulario.reset();
     
 };
@@ -355,6 +427,10 @@ const MostrarDatos = () => {
 const VolverAlFormulario = () => {
     formulario.classList.remove('d-none');
     tablaClientesContainer.classList.add('d-none');
+    BtnEnviar.parentElement.classList.remove('d-none');
+    BtnModificar.parentElement.classList.add('d-none');
+    BtnCancelar.parentElement.classList.add('d-none');
+    BtnMostrar.parentElement.classList.remove('d-none');
 };
 
 
@@ -370,6 +446,8 @@ BtnModificar.addEventListener('click', Modificar);
 BtnCancelar.addEventListener('click', Cancelar)
 
 datatable.on('click', '.modificar', llenarDatos)
-
+datatable.on('click', '.eliminar', Eliminar)
+datatable.on('click', '.ver-contrato', BuscarContrato)
 
 Buscar();
+inicializarEstado();

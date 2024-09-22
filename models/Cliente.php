@@ -9,7 +9,7 @@ class Cliente extends ActiveRecord
 
     protected static $columnasDB = ['cliente_nombre', 'cliente_nit','cliente_propietario', 'cliente_telefono', 'cliente_email', 'cliente_ubicacion', 'cliente_contrato', 'cliente_situacion'];
 
-    public $producto_id;
+    public $cliente_id;
     public $cliente_nombre;
     public $cliente_nit;
     public $cliente_propietario;
@@ -21,7 +21,7 @@ class Cliente extends ActiveRecord
 
     public function __construct($args = [])
     {
-        $this->producto_id = $args['producto_id'] ?? '';
+        $this->cliente_id = $args['cliente_id'] ?? '';
         $this->cliente_nombre = $args['cliente_nombre'] ?? '';
         $this->cliente_nit = $args['cliente_nit'] ?? 0;
         $this->cliente_propietario = $args['cliente_propietario'] ?? '';

@@ -172,4 +172,31 @@ class ClienteController
             ]);
         }
     }
+
+    public static function eliminarAPI()
+    {
+
+        $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
+        try {
+
+            $eliminar = Cliente::find($id);
+            $eliminar->sincronizar([
+                'cliente_situacion' => 0
+            ]);
+            
+            $eliminar->actualizar();
+            http_response_code(200);
+            echo json_encode([
+                'codigo' => 4,
+                'mensaje' => 'Cliente eliminado exitosamente',
+            ]);
+        } catch (Exception $e) {
+            http_response_code(500);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Error al eliminar el Cliente',
+                'detalle' => $e->getMessage(),
+            ]);
+        }
+    }
 }

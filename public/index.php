@@ -17,6 +17,7 @@ $router->get('/ftp', [FtpController::class,'conexion']);
 $router->get('/API/clientes/buscar', [ClienteController::class,'buscarAPI']);
 $router->get('/API/cliente/MostrarContrato', [ClienteController::class,'MostrarContrato']);
 $router->post('/API/cliente/modificar', [ClienteController::class,'modificarAPI']);
+$router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI']);
 
 
 
