@@ -16,6 +16,22 @@ class EmpleadoController
         ]);
     }
 
+    public static function index2(Router $router)
+    {
+        $empleados = Empleado::find(2); 
+        $router->render('empleado/registro', [
+            'empleados' => $empleados
+        ]);
+    }
+
+    public static function index3(Router $router)
+    {
+        $empleados = Empleado::find(2); 
+        $router->render('empleado/lista', [
+            'empleados' => $empleados
+        ]);
+    }
+
     public static function datatable(Router $router)
     {
         $router->render('empleado/datatable', [ ]);
