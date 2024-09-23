@@ -12,35 +12,45 @@ class EmpleadoController
     {
 
         isAuth();
-        hasPermission(['AGENTE', 'ADMINISTRA', 'SUPERVISOR']);
+        hasPermission(['ADMINISTRA']);
         $empleados = Empleado::find(2);
+
         $router->render('empleado/index', [
             'empleados' => $empleados
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function index2(Router $router)
-    {
+    {   
+        isAuth();
+        hasPermission(['AGENTE']);
         $empleados = Empleado::find(2);
+
         $router->render('empleado/registro', [
             'empleados' => $empleados
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function index3(Router $router)
     {
+        isAuth();
+        hasPermission(['SUPERVISOR']);
         $empleados = Empleado::find(2);
+
         $router->render('empleado/lista', [
             'empleados' => $empleados
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function index4(Router $router)
     {
+        isAuth();
+        hasPermission(['ADMINISTRA']);
         $empleados = Empleado::find(2);
+
         $router->render('empleado/perfil', [
             'empleados' => $empleados
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function datatable(Router $router)

@@ -34,15 +34,12 @@
                             <i class="bi bi-people-fill me-2"></i>Empleados
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                            <!-- <h6 class="dropdown-header">Información</h6> -->
+                             <!-- ADMINISTRA -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de empleados</a>
                             </li>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="bi bi-r-circle-fill me-2"></i>Registro de empleados</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/usuario"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de usuarios</a>
@@ -50,8 +47,13 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de permisos</a>
                             </li>
+                            <!-- AGENTE -->
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="bi bi-r-circle-fill me-2"></i>Registro de empleados</a>
+                            </li>
+                            <!-- SUPERVISOR -->
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>

@@ -10,10 +10,12 @@ class UsuarioController
 {
     public static function index(Router $router)
     {
+        isAuth();
+        hasPermission(['ADMINISTRA']);
         $usuarios = Usuario::find(2); 
         $router->render('usuario/index', [
             'usuarios' => $usuarios
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function datatable(Router $router)
