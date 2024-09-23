@@ -27,7 +27,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin: 0;">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/ejemplo/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
+                        <a class="nav-link" aria-current="page" href="/las_aguilas/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
 
                     <div class="nav-item dropdown ">
@@ -52,6 +52,11 @@
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Gestión de permisos</a>
                             </li>
                             
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Añadir Puesto</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Asignar Turnos</a>
+                            </li>
 
 
                         </ul>
@@ -71,19 +76,13 @@
     <div class="progress fixed-bottom" style="height: 6px;">
         <div class="progress-bar progress-bar-animated bg-danger" id="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <div class="container-fluid pt-5 mb-4" style="min-height: 85vh">
+    <div class="container-fluid pt-2 mb-4" style="min-height: 85vh">
 
         <?php echo $contenido; ?>
     </div>
-    <div class="container-fluid ">
-        <div class="row justify-content-center text-center">
-            <div class="col-12">
-                <p style="font-size:xx-small; font-weight: bold;">
-                    Comando de Informática y Tecnología, <?= date('Y') ?> &copy;
-                </p>
-            </div>
-        </div>
-    </div>
+    <footer class="text-center py-2" style="background-color: #343a40; color: white;">
+        <p>&copy; Las Águilas. Todos los derechos reservados. <?= date('Y') ?> </p>
+    </footer>
 </body>
 
 </html>
