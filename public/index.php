@@ -11,8 +11,8 @@ use Controllers\FtpController;
 use Controllers\EmpleadoController;
 use Controllers\PerfilController;
 
+use Controllers\PuestoController;
 
-  
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
@@ -43,6 +43,13 @@ $router->get('/perfil', [PerfilController::class, 'index']);
 
 
 $router->get('/datatable', [EmpleadoController::class, 'datatable']);
+
+//puestos
+$router->get('/puestos', [PuestoController::class, 'index']);
+$router->get('/API/puesto/buscar', [PuestoController::class, 'buscarAPI']);
+$router->post('/API/puesto/guardar', [PuestoController::class, 'guardarAPI']);
+$router->post('/API/puesto/modificar', [PuestoController::class, 'modificarAPI']);
+$router->post('/API/puesto/eliminar', [PuestoController::class, 'eliminarAPI']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
