@@ -55,9 +55,7 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
                             </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
-                            </li>
+                            
                   
                         </ul>
                     </div>
@@ -67,6 +65,7 @@
                         <i class="bi bi-card-checklist me-2"></i>Tareas
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <!-- Administrador -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="bi bi-person-lines-fill me-2"></i>Añadir Puesto</a>
                             </li>
@@ -75,6 +74,9 @@
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="bi bi-person-lines-fill me-2"></i>Imprimir Turnos</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
                             </li>
                         </ul>
                     </div>
