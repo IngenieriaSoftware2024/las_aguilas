@@ -14,7 +14,8 @@ class FacturaController
 {
     public static function index(Router $router)
     {
-
+        isAuth();
+        hasPermission(['ADMINISTRA']);
         $sql = "SELECT cliente_id, cliente_nombre, cliente_nit FROM clientes WHERE cliente_situacion = 1";
         $clientes = Cliente::fetchArray($sql);
 
@@ -22,7 +23,7 @@ class FacturaController
 
         $router->render('factura/factura', [
             'clientes' => $clientes
-        ]);
+        ], 'layouts/menu');
     }
 
 

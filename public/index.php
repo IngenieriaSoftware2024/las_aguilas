@@ -12,7 +12,8 @@ use Controllers\PermisoController;
 use Controllers\EmpleadoController;
 
 use Controllers\FacturaController;
-use Controllers\InicioController;
+
+use Controllers\LoginController;
 use Controllers\PerfilController;
 
 use Controllers\PuestoController;
@@ -24,12 +25,19 @@ use Model\Usuario;
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
+
+$router->get('/', [LoginController::class, 'login']);
+$router->post('/API/login', [LoginController::class, 'loginAPI']);
+$router->get('/menu', [LoginController::class, 'menu']);
+$router->get('/logout', [LoginController::class, 'logout']);
+
+
+
 $router->get('/API/empleado/buscar', [EmpleadoController::class, 'buscarAPI']);
 $router->post('/API/empleado/guardar', [EmpleadoController::class, 'guardarAPI']);
 $router->post('/API/empleado/modificar', [EmpleadoController::class, 'modificarAPI']);
 $router->post('/API/empleado/eliminar', [EmpleadoController::class, 'eliminarAPI']);
 
-$router->get('/', [InicioController::class,'index']);
 $router->get('/API/perfil/buscar', [PerfilController::class, 'buscarAPI']);
 $router->post('/API/perfil/guardar', [PerfilController::class, 'guardarAPI']);
 $router->post('/API/perfil/modificar', [PerfilController::class, 'modificarAPI']);

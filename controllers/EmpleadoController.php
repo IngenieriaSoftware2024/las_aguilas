@@ -3,14 +3,17 @@
 namespace Controllers;
 
 use Exception;
-use Model\Empleado; 
+use Model\Empleado;
 use MVC\Router;
 
-class EmpleadoController 
+class EmpleadoController
 {
     public static function index(Router $router)
     {
-        $empleados = Empleado::find(2); 
+
+        isAuth();
+        hasPermission(['AGENTE', 'ADMINISTRA', 'SUPERVISOR']);
+        $empleados = Empleado::find(2);
         $router->render('empleado/index', [
             'empleados' => $empleados
         ]);
@@ -18,7 +21,7 @@ class EmpleadoController
 
     public static function index2(Router $router)
     {
-        $empleados = Empleado::find(2); 
+        $empleados = Empleado::find(2);
         $router->render('empleado/registro', [
             'empleados' => $empleados
         ]);
@@ -26,7 +29,7 @@ class EmpleadoController
 
     public static function index3(Router $router)
     {
-        $empleados = Empleado::find(2); 
+        $empleados = Empleado::find(2);
         $router->render('empleado/lista', [
             'empleados' => $empleados
         ]);
@@ -34,7 +37,7 @@ class EmpleadoController
 
     public static function index4(Router $router)
     {
-        $empleados = Empleado::find(2); 
+        $empleados = Empleado::find(2);
         $router->render('empleado/perfil', [
             'empleados' => $empleados
         ]);
@@ -42,7 +45,7 @@ class EmpleadoController
 
     public static function datatable(Router $router)
     {
-        $router->render('empleado/datatable', [ ]);
+        $router->render('empleado/datatable', []);
     }
 
     public static function guardarAPI()
@@ -69,7 +72,7 @@ class EmpleadoController
     public static function buscarAPI()
     {
         try {
-            $empleados = Empleado::obtenerEmpleadosConQuery(); 
+            $empleados = Empleado::obtenerEmpleadosConQuery();
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
@@ -116,7 +119,7 @@ class EmpleadoController
         try {
             $empleado = Empleado::find($id);
             $empleado->sincronizar([
-                'emp_situacion' => 0 
+                'emp_situacion' => 0
             ]);
 
             $empleado->actualizar();
