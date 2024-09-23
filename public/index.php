@@ -6,6 +6,7 @@ use MVC\Router;
 use Controllers\AppController;
 
 use Controllers\ClienteController;
+use Controllers\DocumentoController;
 use Controllers\FtpController;
 use Controllers\UsuarioController;
 use Controllers\PermisoController;
@@ -20,7 +21,7 @@ use Controllers\ReporteController;
 use Controllers\TurnoController;
 
 use Controllers\RolController;
-use Model\Usuario;
+use Controllers\Usuario;
 
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
@@ -91,8 +92,11 @@ $router->post('/API/turno/guardar', [TurnoController::class, 'guardarAPI']);
 $router->post('/API/turno/modificar', [TurnoController::class, 'modificarAPI']);
 $router->post('/API/turno/eliminar', [TurnoController::class, 'eliminarAPI']);
 
+
 //reporte PDF turnos
 $router->get('/pdf', [ReporteController::class,'pdf']);
+$router->get('/documento', [DocumentoController::class, 'index']);
+$router->get('/API/documento/buscar', [DocumentoController::class, 'buscarAPI']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
