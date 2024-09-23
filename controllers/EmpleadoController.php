@@ -32,6 +32,14 @@ class EmpleadoController
         ]);
     }
 
+    public static function index4(Router $router)
+    {
+        $empleados = Empleado::find(2); 
+        $router->render('empleado/perfil', [
+            'empleados' => $empleados
+        ]);
+    }
+
     public static function datatable(Router $router)
     {
         $router->render('empleado/datatable', [ ]);
