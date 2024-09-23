@@ -10,10 +10,13 @@ class PermisoController
 {
     public static function index(Router $router)
     {
-        $permisos = Permiso::find(2); 
+        isAuth();
+        hasPermission(['ADMINISTRA']);
+        $permisos = Permiso::find(2);
+
         $router->render('permiso/index', [
             'permisos' => $permisos
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function datatable(Router $router)

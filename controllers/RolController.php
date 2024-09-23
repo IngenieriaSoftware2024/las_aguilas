@@ -10,10 +10,13 @@ class RolController
 {
     public static function index(Router $router)
     {
+        isAuth();
+        hasPermission(['ADMINISTRA']);
         $roles = Rol::find(2); 
+
         $router->render('rol/index', [
             'roles' => $roles
-        ]);
+        ], 'layouts/menu');
     }
 
     public static function buscarAPI()
