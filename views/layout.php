@@ -45,7 +45,13 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Lista de empleados</a>
                             </li>
-
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/usuario"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Gestión de usuarios</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Gestión de permisos</a>
+                            </li>
+                            
 
 
                         </ul>

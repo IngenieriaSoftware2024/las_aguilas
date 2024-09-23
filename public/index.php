@@ -7,12 +7,12 @@ use Controllers\AppController;
 
 use Controllers\ClienteController;
 use Controllers\FtpController;
-
+use Controllers\UsuarioController;
+use Controllers\PermisoController;
 use Controllers\EmpleadoController;
-use Controllers\PerfilController;
+use Controllers\RolController;
+use Model\Usuario;
 
-
-  
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
@@ -22,10 +22,8 @@ $router->post('/API/empleado/modificar', [EmpleadoController::class, 'modificarA
 $router->post('/API/empleado/eliminar', [EmpleadoController::class, 'eliminarAPI']);
 
 $router->get('/', [AppController::class,'index']);
-$router->get('/API/perfil/buscar', [PerfilController::class, 'buscarAPI']);
-$router->post('/API/perfil/guardar', [PerfilController::class, 'guardarAPI']);
-$router->post('/API/perfil/modificar', [PerfilController::class, 'modificarAPI']);
-$router->post('/API/perfil/eliminar', [PerfilController::class, 'eliminarAPI']);
+
+
 
 $router->get('/clientes', [ClienteController::class,'index']);
 $router->post('/API/cliente/guardar', [ClienteController::class,'guardarAPI']);
@@ -38,11 +36,25 @@ $router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI'])
 $router->get('/empleado', [EmpleadoController::class, 'index']);
 $router->get('/empleado/registro', [EmpleadoController::class, 'index2']);
 $router->get('/empleado/lista', [EmpleadoController::class, 'index3']);
-$router->get('/perfil', [PerfilController::class, 'index']);
 
+$router->get('/usuario', [UsuarioController::class, 'index']);
+$router->get('/API/usuario/buscar', [UsuarioController::class, 'buscarAPI']);
+$router->post('/API/usuario/guardar', [UsuarioController::class, 'guardarAPI']);
+$router->post('/API/usuario/modificar', [UsuarioController::class, 'modificarAPI']);
+$router->post('/API/usuario/eliminar', [UsuarioController::class, 'eliminarAPI']);
+$router->get('/datatable', [UsuarioController::class, 'datatable']);
 
+$router->get('/permiso', [PermisoController::class, 'index']);
+$router->get('/API/permiso/buscar', [PermisoController::class, 'buscarAPI']);
+$router->post('/API/permiso/guardar', [PermisoController::class, 'guardarAPI']);
+$router->post('/API/permiso/modificar', [PermisoController::class, 'modificarAPI']);
+$router->post('/API/permiso/eliminar', [PermisoController::class, 'eliminarAPI']);
+$router->get('/datatable', [PermisoController::class, 'datatable']);
 
 $router->get('/datatable', [EmpleadoController::class, 'datatable']);
+
+$router->get('/rol', [RolController::class, 'index']);
+$router->get('/API/rol/buscar', [RolController::class, 'buscarAPI']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

@@ -9,8 +9,9 @@ module.exports = {
     'js/empleado/datatable' : './src/js/empleado/datatable.js',
     'js/empleado/registro' : './src/js/empleado/registro.js',
     'js/empleado/lista' : './src/js/empleado/lista.js',
-    'js/perfil/gestionar' : './src/js/perfil/gestionar.js',
     'js/clientes/clientes' : './src/js/clientes/clientes.js',
+    'js/usuario/datatable' : './src/js/usuario/datatable.js',
+    'js/permiso/datatable' : './src/js/permiso/datatable.js',
   },
   output: {
     filename: '[name].js',
