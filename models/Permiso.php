@@ -1,6 +1,7 @@
 <?php
 
 namespace Model;
+
 class Permiso extends ActiveRecord
 {
     protected static $tabla = 'permiso'; 
@@ -15,14 +16,17 @@ class Permiso extends ActiveRecord
     public function __construct($args = [])
     {
         $this->per_id = $args['per_id'] ?? null;
-        $this->per_usuario = $args['per_usuario'] ?? '';
-        $this->per_rol = $args['per_rol'] ?? ''; 
+        $this->per_usuario = $args['usu_id'] ?? ''; 
+        $this->per_rol = $args['rol_id'] ?? ''; 
         $this->per_situacion = $args['per_situacion'] ?? 1; 
     }
-
+    
     public static function obtenerPermisosConQuery()
     {
-        $sql = "SELECT * FROM " . self::$tabla . " WHERE per_situacion = 1"; 
+        $sql = "SELECT p.per_id, u.usu_nombre, r.rol_nombre 
+FROM permiso p
+JOIN usuario u ON p.per_usuario = u.usu_id
+JOIN rol r ON p.per_rol = r.rol_id;"; 
         return self::fetchArray($sql);
     }
 }

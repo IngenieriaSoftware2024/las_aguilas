@@ -32,6 +32,14 @@ class EmpleadoController
         ]);
     }
 
+    public static function index4(Router $router)
+    {
+        $empleados = Empleado::find(2); 
+        $router->render('empleado/perfil', [
+            'empleados' => $empleados
+        ]);
+    }
+
     public static function datatable(Router $router)
     {
         $router->render('empleado/datatable', [ ]);
@@ -42,7 +50,7 @@ class EmpleadoController
         $_POST['emp_nombre'] = htmlspecialchars($_POST['emp_nombre']);
         try {
             $empleado = new Empleado($_POST);
-            $resultado = $empleado->crear();
+            $empleado = $empleado->crear();
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
