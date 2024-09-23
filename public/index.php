@@ -12,6 +12,7 @@ use Controllers\PermisoController;
 use Controllers\EmpleadoController;
 
 use Controllers\FacturaController;
+use Controllers\GraficaController;
 use Controllers\InicioController;
 use Controllers\PerfilController;
 
@@ -93,6 +94,10 @@ $router->post('/API/turno/eliminar', [TurnoController::class, 'eliminarAPI']);
 
 //reporte PDF turnos
 $router->get('/pdf', [ReporteController::class,'pdf']);
+
+//grafia Turnos
+$router->get('/turnos/estadisticas', [GraficaController::class, 'estadisticas']);
+$router->get('/API/turnos/estadisticas', [GraficaController::class, 'turnosPorPuestoAPI']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

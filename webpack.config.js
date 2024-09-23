@@ -16,6 +16,7 @@ module.exports = {
     'js/turno/index': './src/js/turno/index.js',
     'js/usuario/datatable' : './src/js/usuario/datatable.js',
     'js/permiso/datatable' : './src/js/permiso/datatable.js',
+    'js/turno/estadisticas' : './src/js/turno/estadisticas.js',
   },
   output: {
     filename: '[name].js',
