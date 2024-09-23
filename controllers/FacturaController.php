@@ -154,54 +154,51 @@ class FacturaController
         echo json_encode($datos);
     }
 
-    // public static function generarPdf(Router $router)
-    // {
-    //     $cliente_id = $_POST['cliente_id'];
-    //     $detalle_id = $_POST['detalle_id'];
-    //     $factura_id = $_POST['factura_id'];
+    public static function buscarFacturas()
+{
+    $mes = $_GET['mes'] ?? null;
+    $anio = $_GET['anio'] ?? null;
+    $id = $_GET['cliente'] ?? null;
 
-    //     $sql = "SELECT cliente_nombre, cliente_nit, factura_correlativo, detalle_cantidad_empleados, detalle_empleados, detalle_total FROM encabezado_factura
-    //             INNER JOIN clientes ON factura_cliente = cliente_id
-    //             INNER JOIN detalle_factura ON detalle_encabezado = factura_id 
-    //             WHERE cliente_situacion = 1
-    //             AND detalle_situacion = 1
-    //             AND factura_situacion = 1
-    //             AND cliente_id = $cliente_id
-    //             AND detalle_id = $detalle_id
-    //             AND factura_id = $factura_id";
+    try {
+        $query = "SELECT detalle_id, factura_id, cliente_id, cliente_nombre, factura_correlativo, factura_mes, factura_anio FROM encabezado_factura INNER JOIN clientes ON factura_cliente = cliente_id INNER JOIN detalle_factura ON detalle_encabezado = factura_id WHERE detalle_situacion = 1 AND factura_situacion = 1 AND cliente_situacion = 1";
 
-    //     $data = EncabezadoFactura::fetchFirst($sql);
+        if ($id) {
+            $query .= " AND factura_cliente = " . intval($id);
+        }
+        if ($mes) {
+            $query .= " AND factura_mes = " . intval($mes);
+        }
+        if ($anio) {
+            $query .= " AND factura_anio = " . intval($anio);
+        }
 
-    //     $mpdf = new Mpdf(
-    //         [
-    //             "default_font_size" => "12",
-    //             "default_font" => "arial",
-    //             "orientation" => "P",
-    //             "margin_top" => "30",
-    //             "format" => "Letter"
-    //         ]
-    //     );
+        $datos = EncabezadoFactura::fetchArray($query);
 
-    //     $html = $router->load('pdf/reporte', [
-    //         'data' => $data
-    //     ]);
+        echo json_encode([
+            'codigo' => 1,
+            'mensaje' => 'Datos encontrados exitosamente',
+            'detalle' => $datos,
+        ]);
+    } catch (Exception $e) {
+        echo json_encode([
+            'codigo' => 0,
+            'mensaje' => 'Error al buscar los datos',
+            'detalle' => $e->getMessage(),
+        ]);
+    }
+}
 
-    //     $css = $router->load('pdf/styles');;
-    //     $mpdf->WriteHTML($css, HTMLParserMode::HEADER_CSS);
-    //     $mpdf->WriteHTML($html, HTMLParserMode::HTML_BODY);
-    //     $mpdf->AddPage("L");
-    //     $archivo = $mpdf->Output("reporte.pdf", "I");
-    //     echo base64_encode($archivo);
-    // }
+
 
     public static function generarPdf(Router $router)
-{
-    $cliente_id = $_POST['cliente_id'];
-    $detalle_id = $_POST['detalle_id'];
-    $factura_id = $_POST['factura_id'];
+    {
+        $cliente_id = $_POST['cliente_id'];
+        $detalle_id = $_POST['detalle_id'];
+        $factura_id = $_POST['factura_id'];
 
-    // Consulta SQL para obtener los datos de la factura
-    $sql = "SELECT cliente_nombre, cliente_nit, factura_correlativo, detalle_cantidad_empleados, detalle_empleados, detalle_total 
+        // Consulta SQL para obtener los datos de la factura
+        $sql = "SELECT cliente_nombre, cliente_nit, factura_correlativo, detalle_cantidad_empleados, detalle_empleados, detalle_total 
             FROM encabezado_factura
             INNER JOIN clientes ON factura_cliente = cliente_id
             INNER JOIN detalle_factura ON detalle_encabezado = factura_id 
@@ -212,40 +209,39 @@ class FacturaController
             AND detalle_id = $detalle_id
             AND factura_id = $factura_id";
 
-    // Obtener los datos
-    $data = EncabezadoFactura::fetchFirst($sql);
+        // Obtener los datos
+        $data = EncabezadoFactura::fetchFirst($sql);
 
-    if (!$data) {
-        echo json_encode([
-            'status' => 'error',
-            'message' => 'Datos de la factura no encontrados.'
+        if (!$data) {
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Datos de la factura no encontrados.'
+            ]);
+            return;
+        }
+
+
+        $mpdf = new Mpdf([
+            "default_font_size" => "12",
+            "default_font" => "arial",
+            "orientation" => "P",
+            "margin_top" => "30",
+            "format" => "Letter"
         ]);
-        return;
+
+
+        $html = $router->load('PdfFactura/factura', [
+            'data' => $data
+        ]);
+
+
+        $css = $router->load('PdfFactura/style');
+
+
+        $mpdf->WriteHTML($css, HTMLParserMode::HEADER_CSS);
+
+        $mpdf->WriteHTML($html, HTMLParserMode::HTML_BODY);
+
+        $mpdf->Output("Factura_" . $data['factura_correlativo'] . ".pdf", "I");
     }
-
-
-    $mpdf = new Mpdf([
-        "default_font_size" => "12",
-        "default_font" => "arial",
-        "orientation" => "P",
-        "margin_top" => "30",
-        "format" => "Letter"
-    ]);
-
-
-    $html = $router->load('PdfFactura/factura', [
-        'data' => $data
-    ]);
-
-
-    $css = $router->load('PdfFactura/style');
-
-
-    $mpdf->WriteHTML($css, HTMLParserMode::HEADER_CSS);
-
-    $mpdf->WriteHTML($html, HTMLParserMode::HTML_BODY);
-
-    $mpdf->Output("Factura_" . $data['factura_correlativo'] . ".pdf", "I");
-}
-
 }

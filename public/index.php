@@ -53,6 +53,7 @@ $router->get('/API/totalempleados/buscar', [FacturaController::class, 'getEmplea
 $router->post('/API/factura/generar', [FacturaController::class, 'generarAPI']);
 $router->get('/API/facturas/buscar', [FacturaController::class, 'buscarAPI']);
 $router->post('/API/factura/generarPdf', [FacturaController::class, 'generarPdf']);
+$router->get('/API/facturas/busqueda', [FacturaController::class, 'buscarFacturas']);
 
 
 

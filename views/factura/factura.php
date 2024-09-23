@@ -52,6 +52,9 @@
                 <button type="submit" id="BtnGenerar" class="btn btn-primary">Generar Factura</button>
             </div>
             <div class="col-auto">
+                <button type="button" id="BtnMostrarFacturas" class="btn btn-success text-uppercase shadow border-0">Ver todas las facturas</button>
+            </div>
+            <div class="col-auto">
                 <button type="button" id="BtnBuscar" class="btn btn-warning text-uppercase shadow border-0">Buscar</button>
             </div>
         </div>
