@@ -17,6 +17,7 @@ use Controllers\InicioController;
 use Controllers\PerfilController;
 
 use Controllers\PuestoController;
+use Controllers\ReporteController;
 use Controllers\TurnoController;
 
 use Controllers\RolController;
@@ -91,10 +92,11 @@ $router->post('/API/turno/guardar', [TurnoController::class, 'guardarAPI']);
 $router->post('/API/turno/modificar', [TurnoController::class, 'modificarAPI']);
 $router->post('/API/turno/eliminar', [TurnoController::class, 'eliminarAPI']);
 
+
+//reporte PDF turnos
+$router->get('/pdf', [ReporteController::class,'pdf']);
 $router->get('/documento', [DocumentoController::class, 'index']);
 $router->get('/API/documento/buscar', [DocumentoController::class, 'buscarAPI']);
-
-
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
