@@ -1,5 +1,4 @@
 import { Dropdown } from "bootstrap";
-import { BootstrapTheme } from "fullcalendar";
 import { Toast, validarFormulario } from "../funciones";
 import Swal from "sweetalert2";
 
@@ -42,7 +41,11 @@ const buscar = async (e) => {
     e.preventDefault();
     const name = document.getElementById('emp_nombre').value.trim();
     if (name === '') {
-        alert('Ingrese un nombre');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Campo vacío',
+            text: 'Ingrese un nombre',
+        });
         return;
     }
 
@@ -66,7 +69,11 @@ const buscar = async (e) => {
                 info.style.display = 'block';
                 overlay.style.display = 'block';
             } else {
-                alert('Empleado no encontrado');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Empleado no encontrado',
+                    text: 'Por favor verifique el nombre ingresado.',
+                });
             }
         } else {
             console.error('Error al buscar el empleado');
@@ -84,4 +91,4 @@ closePerfil.addEventListener('click', () => {
 });
 
 formulario.addEventListener('submit', buscar);
-cargarEmpleadosActivos(); 
+cargarEmpleadosActivos();

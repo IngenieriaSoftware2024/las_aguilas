@@ -28,6 +28,7 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/las_aguilas/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
+                        <!-- EMPLEADOS -->
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-people-fill me-2"></i>Empleados
@@ -35,28 +36,19 @@
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
                             <!-- <h6 class="dropdown-header">Información</h6> -->
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Gestión de empleados</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de empleados</a>
                             </li>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Registro de empleados</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="bi bi-r-circle-fill me-2"></i>Registro de empleados</a>
                             </li>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Lista de empleados</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
                             </li>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/usuario"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Gestión de usuarios</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/usuario"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de usuarios</a>
                             </li>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Gestión de permisos</a>
-                            </li>
-                            
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Añadir Puesto</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Asignar Turnos</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Imprimir Turnos</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de permisos</a>
                             </li>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
@@ -64,6 +56,24 @@
                   
                         </ul>
                     </div>
+                    <!-- ASIGNACIÓN DE TAREAS -->
+                    <div class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-card-checklist me-2"></i>Tareas
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="bi bi-person-lines-fill me-2"></i>Añadir Puesto</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="bi bi-person-lines-fill me-2"></i>Asignar Turnos</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="bi bi-person-lines-fill me-2"></i>Imprimir Turnos</a>
+                            </li>
+                        </ul>
+                    </div>
+                     <!-- CLIENTES -->
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-person-badge m-2"></i>Clientes
