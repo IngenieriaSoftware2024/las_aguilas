@@ -21,7 +21,6 @@ const cargarEmpleadosActivos = async () => {
         const url = '/las_aguilas/API/empleado/buscar';
         const respuesta = await fetch(url);
         const data = await respuesta.json();
-        console.log(data);
         const empleadosActivos = data.datos.filter(empleado => empleado.emp_situacion === '1');
 
         const listaEmpleados = document.getElementById('listaEmpleados');
@@ -29,23 +28,12 @@ const cargarEmpleadosActivos = async () => {
 
         empleadosActivos.forEach(empleado => {
             const li = document.createElement('li');
-            li.textContent = `${empleado.emp_nombre} - ACTIVO`; // Cambiado a "ACTIVO"
+            li.textContent = ${empleado.emp_nombre} - ACTIVO;
             listaEmpleados.appendChild(li);
         });
     } catch (error) {
         console.log(error);
     }
-};
-
-
-
-const hashPassword = async (password) => {
-    const encoder = new TextEncoder();
-    const data = encoder.encode(password);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-    return hashHex;
 };
 
 const guardar = async (e) => {
@@ -60,15 +48,19 @@ const guardar = async (e) => {
     }
     try {
         const body = new FormData(formulario);
-        const password = formulario.usu_password.value;
-        const hashedPassword = await hashPassword(password);
-        body.set('usu_password', hashedPassword);
         const url = "/las_aguilas/API/usuario/guardar";
         const config = {
             method: 'POST',
             body
         };
         const respuesta = await fetch(url, config);
+        
+        if (!respuesta.ok) {
+            const errorText = await respuesta.text(); // Obtener el texto de error
+            console.error('Error en la respuesta del servidor:', errorText);
+            throw new Error('Error en la respuesta del servidor');
+        }
+
         const data = await respuesta.json();
         const { codigo, mensaje, detalle } = data;
         let icon = 'info';
@@ -85,12 +77,17 @@ const guardar = async (e) => {
             title: mensaje
         });
     } catch (error) {
-        console.log(error);
+        console.error('Error al guardar:', error);
+        Swal.fire({
+            title: "Error",
+            text: "Hubo un problema al guardar el usuario.",
+            icon: "error"
+        });
     }
-}
+};
+
 
 const traerDatos = (usuario) => {
-    console.log(usuario);
     formulario.usu_id.value = usuario.usu_id;
     formulario.usu_nombre.value = usuario.usu_nombre;
     formulario.usu_catalogo.value = usuario.usu_catalogo;
@@ -127,11 +124,6 @@ const modificar = async (e) => {
     }
     try {
         const body = new FormData(formulario);
-        const password = formulario.usu_password.value;
-        if (password) {
-            const hashedPassword = await hashPassword(password);
-            body.set('usu_password', hashedPassword);
-        }
         const url = "/las_aguilas/API/usuario/modificar";
         const config = {
             method: 'POST',
@@ -213,8 +205,8 @@ const buscar = async (e) => {
         };
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
-        console.log(data);
-        usuariosData = data.datos || []; 
+        usuariosData = data.datos || [];
+        console.log(usuariosData)
         datatable.clear().draw();
         if (usuariosData.length > 0) {
             datatable.rows.add(usuariosData).draw();
@@ -259,12 +251,12 @@ const datatable = new DataTable('#tablaUsuario', {
         {
             title: "MODIFICAR",
             data: 'usu_id',
-            render: (data) => `<button class="btn btn-warning btn-modificar" data-id="${data}">Modificar</button>`
+            render: (data) => <button class="btn btn-warning btn-modificar" data-id="${data}">Modificar</button>
         },
         {
             title: "ELIMINAR",
             data: 'usu_id',
-            render: data => `<button class="btn btn-danger btn-eliminar" data-id="${data}">Eliminar</button>`
+            render: data => <button class="btn btn-danger btn-eliminar" data-id="${data}">Eliminar</button>
         },
     ]
 });
@@ -274,11 +266,8 @@ buscar();
 datatable.on('click', '.btn-modificar', (e) => {
     const usu_id = e.currentTarget.dataset.id; 
     const usuario = usuariosData.find(usu => usu.usu_id === usu_id); 
-    console.log(usuario); 
     if (usuario) {
         traerDatos(usuario); 
-    } else {
-        console.error("Usuario no encontrado");
     }
 });
 
