@@ -84,7 +84,7 @@ const guardar = async (e) => {
 
     try {
         const body = new FormData(formulario)
-        const url = "/las_aguilas_prueba/API/puesto/guardar"
+        const url = "/las_aguilas/API/puesto/guardar"
         const config = {
             method: 'POST',
             body
@@ -116,7 +116,7 @@ const guardar = async (e) => {
 
 const buscar = async () => {
     try {
-        const url = "/las_aguilas_prueba/API/puesto/buscar"
+        const url = "/las_aguilas/API/puesto/buscar"
         const config = {
             method: 'GET',
         }
@@ -185,7 +185,7 @@ const modificar = async (e) => {
 
     try {
         const body = new FormData(formulario)
-        const url = "/las_aguilas_prueba/API/puesto/modificar"
+        const url = "/las_aguilas/API/puesto/modificar"
         const config = {
             method: 'POST',
             body
@@ -236,7 +236,7 @@ const eliminar = async (e) => {
         try {
             const body = new FormData()
             body.append('puesto_id', puesto)
-            const url = "/las_aguilas_prueba/API/puesto/eliminar"
+            const url = "/las_aguilas/API/puesto/eliminar"
             const config = {
                 method: 'POST',
                 body
