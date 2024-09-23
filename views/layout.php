@@ -8,20 +8,19 @@
     <link rel="shortcut icon" href="<?= asset('images/cit.png') ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= asset('build/styles.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <title>DemoApp</title>
+    <title>- Las Aguilas S.A. -</title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
 
-        <div class="container-fluid">
-
+        <div class="container-fluid me-5 ms-5">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="/ejemplo/">
-                <img src="<?= asset('./images/cit.png') ?>" width="35px'" alt="cit">
-                Aplicaciones
+            <a class="navbar-brand" href="/las_aguilas/">
+                <img src="<?= asset('./images/AguilaLogo.png') ?>" width="40px'" alt="cit">
+                Las Aguilas S.A.
             </a>
             <div class="collapse navbar-collapse" id="navbarToggler">
 
@@ -29,10 +28,9 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/las_aguilas/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
-
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-gear me-2"></i>Dropdown
+                            <i class="bi bi-people-fill me-2"></i>Empleados
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
                             <!-- <h6 class="dropdown-header">Información</h6> -->
@@ -60,17 +58,39 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Imprimir Turnos</a>
                             </li>
-
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
+                            </li>
+                  
                         </ul>
                     </div>
-
+                    <div class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-badge m-2"></i>Clientes
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-person-plus-fill me-2"></i>Ingresar Cliente</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-eye-fill me-2"></i>Ver Contrato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="nav-item dropdown ">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-file-richtext-fill me-2"></i>Facturas
+                        </a>
+                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <a class="dropdown-item nav-link text-white " href="/las_aguilas/factura"><i class="bi bi-file-text me-2"></i>Generar Facturas</a>
+                            </li>
+                        </ul>
+                    </div>
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
                     <!-- Ruta relativa desde el archivo donde se incluye menu.php -->
-                    <a href="/menu/" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i>MENÚ</a>
+                    <a href="/las_aguilas/logout" class="btn btn-danger"><i class="bi bi-arrow-bar-left"></i>SALIR</a>
                 </div>
-
-
             </div>
         </div>
 
