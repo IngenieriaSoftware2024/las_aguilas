@@ -12,6 +12,10 @@ use Controllers\GraficaController;
 use Controllers\FtpController;
 use Controllers\InicioController;
 use Controllers\PermisoController;
+
+use Controllers\LoginController;
+use Controllers\PerfilController;
+
 use Controllers\PuestoController;
 use Controllers\ReporteController;
 use Controllers\RolController;
@@ -22,11 +26,39 @@ use Controllers\UsuarioController;
 $router = new Router();
 $router->setBaseURL('/' . $_ENV['APP_NAME']);
 
+
+$router->get('/', [LoginController::class, 'login']);
+$router->post('/API/login', [LoginController::class, 'loginAPI']);
+$router->get('/menu', [LoginController::class, 'menu']);
+$router->get('/logout', [LoginController::class, 'logout']);
+
+
+$router->get('/', [LoginController::class, 'login']);
+$router->post('/API/login', [LoginController::class, 'loginAPI']);
+$router->get('/menu', [LoginController::class, 'menu']);
+$router->get('/logout', [LoginController::class, 'logout']);
+
+
+
 // Rutas de Empleados
 $router->get('/API/empleado/buscar', [EmpleadoController::class, 'buscarAPI']);
 $router->post('/API/empleado/guardar', [EmpleadoController::class, 'guardarAPI']);
 $router->post('/API/empleado/modificar', [EmpleadoController::class, 'modificarAPI']);
 $router->post('/API/empleado/eliminar', [EmpleadoController::class, 'eliminarAPI']);
+
+$router->get('/API/perfil/buscar', [PerfilController::class, 'buscarAPI']);
+$router->post('/API/perfil/guardar', [PerfilController::class, 'guardarAPI']);
+$router->post('/API/perfil/modificar', [PerfilController::class, 'modificarAPI']);
+$router->post('/API/perfil/eliminar', [PerfilController::class, 'eliminarAPI']);
+
+
+$router->get('/clientes', [ClienteController::class,'index']);
+$router->post('/API/cliente/guardar', [ClienteController::class,'guardarAPI']);
+$router->get('/ftp', [FtpController::class,'conexion']);
+$router->get('/API/clientes/buscar', [ClienteController::class,'buscarAPI']);
+$router->get('/API/cliente/MostrarContrato', [ClienteController::class,'MostrarContrato']);
+$router->post('/API/cliente/modificar', [ClienteController::class,'modificarAPI']);
+$router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI']);
 
 $router->get('/empleado', [EmpleadoController::class, 'index']);
 $router->get('/empleado/registro', [EmpleadoController::class, 'index2']);

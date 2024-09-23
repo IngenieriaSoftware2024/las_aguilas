@@ -17,6 +17,7 @@ module.exports = {
     'js/usuario/datatable' : './src/js/usuario/datatable.js',
     'js/permiso/datatable' : './src/js/permiso/datatable.js',
     'js/turno/estadisticas' : './src/js/turno/estadisticas.js',
+    'js/login/login' : './src/js/login/login.js',
   },
   output: {
     filename: '[name].js',
