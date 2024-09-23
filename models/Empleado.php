@@ -30,4 +30,10 @@ class Empleado extends ActiveRecord
         $sql = "SELECT * FROM " . self::$tabla . " WHERE emp_situacion = 1"; 
         return self::fetchArray($sql);
     }
+
+    public static function buscar()
+    {
+        $sql = "SELECT * FROM empleado where emp_situacion = 1";
+        return self::fetchArray($sql);
+    }
 }

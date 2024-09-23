@@ -31,4 +31,11 @@ class Cliente extends ActiveRecord
         $this->cliente_contrato = $args['cliente_contrato'] ?? '';
         $this->cliente_situacion = $args['cliente_situacion'] ?? 1;
     }
+
+    public static function buscar()
+    {
+        $sql = "SELECT * FROM clientes where cliente_situacion = 1";
+        return self::fetchArray($sql);
+    }
+
 }
