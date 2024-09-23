@@ -89,7 +89,7 @@ $router->post('/API/turno/guardar', [TurnoController::class, 'guardarAPI']);
 $router->post('/API/turno/modificar', [TurnoController::class, 'modificarAPI']);
 $router->post('/API/turno/eliminar', [TurnoController::class, 'eliminarAPI']);
 
-//reporte PDF
+//reporte PDF turnos
 $router->get('/pdf', [ReporteController::class,'pdf']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
