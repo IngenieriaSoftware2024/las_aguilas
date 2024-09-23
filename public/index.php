@@ -8,6 +8,7 @@ use Controllers\ClienteController;
 use Controllers\DocumentoController;
 use Controllers\EmpleadoController;
 use Controllers\FacturaController;
+use Controllers\GraficaController;
 use Controllers\FtpController;
 use Controllers\InicioController;
 use Controllers\PermisoController;
@@ -89,6 +90,10 @@ $router->get('/API/documento/buscar', [DocumentoController::class, 'buscarAPI'])
 
 // Rutas de Reportes
 $router->get('/pdf', [ReporteController::class, 'pdf']);
+
+//grafia Turnos
+$router->get('/turnos/estadisticas', [GraficaController::class, 'estadisticas']);
+$router->get('/API/turnos/estadisticas', [GraficaController::class, 'turnosPorPuestoAPI']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
