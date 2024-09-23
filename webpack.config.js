@@ -11,6 +11,7 @@ module.exports = {
     'js/empleado/lista' : './src/js/empleado/lista.js',
     'js/perfil/gestionar' : './src/js/perfil/gestionar.js',
     'js/clientes/clientes' : './src/js/clientes/clientes.js',
+    'js/facturas/facturas' : './src/js/facturas/facturas.js',
   },
   output: {
     filename: '[name].js',

@@ -198,6 +198,7 @@ class ActiveRecord {
     }
 
     public static function EjectuarQuery($query) {
+
         $resultado = self::$db->exec($query);
         return $resultado; 
     }

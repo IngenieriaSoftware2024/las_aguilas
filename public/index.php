@@ -9,6 +9,7 @@ use Controllers\ClienteController;
 use Controllers\FtpController;
 
 use Controllers\EmpleadoController;
+use Controllers\FacturaController;
 use Controllers\PerfilController;
 
 
@@ -43,6 +44,19 @@ $router->get('/perfil', [PerfilController::class, 'index']);
 
 
 $router->get('/datatable', [EmpleadoController::class, 'datatable']);
+
+
+
+
+$router->get('/factura', [FacturaController::class, 'index']);
+$router->get('/API/totalempleados/buscar', [FacturaController::class, 'getEmpleados']);
+$router->post('/API/factura/generar', [FacturaController::class, 'generarAPI']);
+$router->get('/API/facturas/buscar', [FacturaController::class, 'buscarAPI']);
+$router->post('/API/factura/generarPdf', [FacturaController::class, 'generarPdf']);
+$router->get('/API/facturas/busqueda', [FacturaController::class, 'buscarFacturas']);
+
+
+
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
