@@ -10,6 +10,7 @@ use Controllers\FtpController;
 
 use Controllers\EmpleadoController;
 use Controllers\FacturaController;
+use Controllers\InicioController;
 use Controllers\PerfilController;
 
 
@@ -22,7 +23,7 @@ $router->post('/API/empleado/guardar', [EmpleadoController::class, 'guardarAPI']
 $router->post('/API/empleado/modificar', [EmpleadoController::class, 'modificarAPI']);
 $router->post('/API/empleado/eliminar', [EmpleadoController::class, 'eliminarAPI']);
 
-$router->get('/', [AppController::class,'index']);
+$router->get('/', [InicioController::class,'index']);
 $router->get('/API/perfil/buscar', [PerfilController::class, 'buscarAPI']);
 $router->post('/API/perfil/guardar', [PerfilController::class, 'guardarAPI']);
 $router->post('/API/perfil/modificar', [PerfilController::class, 'modificarAPI']);
