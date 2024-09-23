@@ -14,11 +14,14 @@ class GraficaController {
    
     public static function turnosPorPuestoAPI(){
         try{
-            $sql = 'SELECT puesto_nombre AS puesto, COUNT(turno_id) AS cantidad_turnos
-                    FROM turnos
-                    JOIN puestos ON turno_puesto = puesto_id
-                    GROUP BY puesto_nombre
-                    ORDER BY cantidad_turnos DESC';
+            $sql = 'SELECT puesto_nombre AS puesto, 
+            COUNT(turno_id) AS cantidad_turnos
+            FROM turnos
+            JOIN puestos ON turno_puesto = puesto_id
+            WHERE turno_situacion = 1
+            GROUP BY puesto_nombre
+            ORDER BY cantidad_turnos DESC';
+;
             
             $datos = Turno::fetchArray($sql);
             
