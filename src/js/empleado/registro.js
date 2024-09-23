@@ -18,7 +18,6 @@ const guardar = async (e) => {
     }
 
     try {
-       
         const body = new FormData(formulario);
         const url = "/las_aguilas/API/empleado/guardar"; 
         const config = {
@@ -26,7 +25,6 @@ const guardar = async (e) => {
             body
         };
 
-        
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
 
@@ -34,7 +32,19 @@ const guardar = async (e) => {
         let icon = 'info';
         if (codigo == 1) {
             icon = 'success';
-            formulario.reset();  
+            formulario.reset();
+            Swal.fire({
+                title: '¡Éxito!',
+                text: mensaje,
+                icon: icon,
+                confirmButtonText: 'Aceptar',
+                backdrop: true,
+                allowOutsideClick: false,
+                customClass: {
+                    title: 'swal-title-large',
+                }
+            });
+        } else {
             icon = 'error';
             console.log(detalle);
         }
@@ -49,4 +59,3 @@ const guardar = async (e) => {
 }
 
 formulario.addEventListener('submit', guardar);
-
