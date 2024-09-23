@@ -61,6 +61,9 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
                             </li>
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
+                            </li>
                   
                         </ul>
                     </div>
