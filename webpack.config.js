@@ -13,6 +13,7 @@ module.exports = {
     'js/clientes/clientes' : './src/js/clientes/clientes.js',
     'js/puesto/index': './src/js/puesto/index.js',
     'js/facturas/facturas' : './src/js/facturas/facturas.js',
+    'js/turno/index': './src/js/turno/index.js',
   },
   output: {
     filename: '[name].js',
