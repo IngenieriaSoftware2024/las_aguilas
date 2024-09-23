@@ -49,6 +49,10 @@ $router->get('/datatable', [EmpleadoController::class, 'datatable']);
 
 
 $router->get('/factura', [FacturaController::class, 'index']);
+$router->get('/API/totalempleados/buscar', [FacturaController::class, 'getEmpleados']);
+$router->post('/API/factura/generar', [FacturaController::class, 'generarAPI']);
+$router->get('/API/facturas/buscar', [FacturaController::class, 'buscarAPI']);
+$router->post('/API/factura/generarPdf', [FacturaController::class, 'generarPdf']);
 
 
 
