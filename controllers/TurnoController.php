@@ -10,10 +10,13 @@ class TurnoController
 {
     public static function index(Router $router)
     {
+        isAuth();
+        hasPermission(['ADMINISTRA']);
+
         $turnos = Turno::find(2);
         $router->render('turnos/index', [
             'turnos' => $turnos
-        ]);
+        ],  'layouts/menu');
     }
     
 

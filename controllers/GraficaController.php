@@ -9,7 +9,9 @@ use MVC\Router;
 class GraficaController {
 
     public static function estadisticas(Router $router){
-        $router->render('turnos/estadisticas');
+        isAuth();
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
+        $router->render('turnos/estadisticas', 'layouts/menu');
     }
    
     public static function turnosPorPuestoAPI(){
