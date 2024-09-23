@@ -45,7 +45,9 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Lista de empleados</a>
                             </li>
-
+                            <li>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Añadir Puesto</a>
+                            </li>
 
 
                         </ul>
