@@ -24,7 +24,7 @@ const chartCliente = new Chart(ctx, {
 
 // Función para obtener los datos de la API y actualizar la gráfica
 const getEstadisticas = async () => {
-    const url = '/las_aguilas_prueba/API/turnos/estadisticas';  // URL del nuevo endpoint
+    const url = '/las_aguilas/API/turnos/estadisticas';  // URL del nuevo endpoint
     const config = { method: "GET" };
     const response = await fetch(url, config);
     const data = await response.json();
