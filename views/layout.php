@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="<?= asset('images/cit.png') ?>" type="image/x-icon">
     <link rel="stylesheet" href="<?= asset('build/styles.css') ?>">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-    <title>DemoApp</title>
+    <title>- Las Aguilas S.A. -</title>
 </head>
 
 <body>
