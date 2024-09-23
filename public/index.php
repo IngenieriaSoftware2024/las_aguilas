@@ -46,12 +46,6 @@ $router->post('/API/empleado/guardar', [EmpleadoController::class, 'guardarAPI']
 $router->post('/API/empleado/modificar', [EmpleadoController::class, 'modificarAPI']);
 $router->post('/API/empleado/eliminar', [EmpleadoController::class, 'eliminarAPI']);
 
-$router->get('/API/perfil/buscar', [PerfilController::class, 'buscarAPI']);
-$router->post('/API/perfil/guardar', [PerfilController::class, 'guardarAPI']);
-$router->post('/API/perfil/modificar', [PerfilController::class, 'modificarAPI']);
-$router->post('/API/perfil/eliminar', [PerfilController::class, 'eliminarAPI']);
-
-
 $router->get('/clientes', [ClienteController::class,'index']);
 $router->post('/API/cliente/guardar', [ClienteController::class,'guardarAPI']);
 $router->get('/ftp', [FtpController::class,'conexion']);

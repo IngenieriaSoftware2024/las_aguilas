@@ -28,18 +28,4 @@ class Usuario extends ActiveRecord
         $sql = "SELECT * FROM " . self::$tabla . " WHERE usu_situacion = 1"; 
         return self::fetchArray($sql);
     }
-
-    public function validarUsuarioExistente() : bool
-    {
-        $sql = "SELECT * FROM usuario where usu_catalogo = $this->usu_catalogo";
-        $resultado = static::fetchArray($sql);
-        return $resultado ? true : false;
-    }
-    public function usuarioExistente(): array
-    {
-        $sql = "SELECT usu_id,usu_nombre, usu_password, usu_catalogo, rol_nombre from permiso inner join usuario on per_usuario = usu_id inner join rol on rol_id = per_rol inner join aplicacion on rol_app = app_id where per_situacion = 1 AND rol_situacion = 1 AND usu_catalogo = $this->usu_catalogo";
-        $resultado = static::fetchFirst($sql);
-        return $resultado;
-    }
-
 }
