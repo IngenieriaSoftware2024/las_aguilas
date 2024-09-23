@@ -3,56 +3,40 @@
 namespace Controllers;
 
 use Exception;
-use Model\Empleado; 
+use Model\Usuario; 
 use MVC\Router;
 
-class EmpleadoController 
+class UsuarioController 
 {
     public static function index(Router $router)
     {
-        $empleados = Empleado::find(2); 
-        $router->render('empleado/index', [
-            'empleados' => $empleados
-        ]);
-    }
-
-    public static function index2(Router $router)
-    {
-        $empleados = Empleado::find(2); 
-        $router->render('empleado/registro', [
-            'empleados' => $empleados
-        ]);
-    }
-
-    public static function index3(Router $router)
-    {
-        $empleados = Empleado::find(2); 
-        $router->render('empleado/lista', [
-            'empleados' => $empleados
+        $usuarios = Usuario::find(2); 
+        $router->render('usuario/index', [
+            'usuarios' => $usuarios
         ]);
     }
 
     public static function datatable(Router $router)
     {
-        $router->render('empleado/datatable', [ ]);
+        $router->render('usuario/datatable', [ ]);
     }
 
     public static function guardarAPI()
     {
-        $_POST['emp_nombre'] = htmlspecialchars($_POST['emp_nombre']);
+        $_POST['usu_nombre'] = htmlspecialchars($_POST['usu_nombre']);
         try {
-            $empleado = new Empleado($_POST);
-            $empleado = $empleado->crear();
+            $usuario = new Usuario($_POST);
+            $usuario = $usuario->crear();
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
-                'mensaje' => 'Empleado guardado exitosamente',
+                'mensaje' => 'Usuario guardado exitosamente',
             ]);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'codigo' => 0,
-                'mensaje' => 'Error al guardar empleado',
+                'mensaje' => 'Error al guardar usuario',
                 'detalle' => $e->getMessage(),
             ]);
         }
@@ -61,19 +45,19 @@ class EmpleadoController
     public static function buscarAPI()
     {
         try {
-            $empleados = Empleado::obtenerEmpleadosConQuery(); 
+            $usuarios = Usuario::obtenerUsuariosConQuery(); 
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
                 'mensaje' => 'Datos encontrados',
                 'detalle' => '',
-                'datos' => $empleados
+                'datos' => $usuarios
             ]);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'codigo' => 0,
-                'mensaje' => 'Error al buscar empleados',
+                'mensaje' => 'Error al buscar usuarios',
                 'detalle' => $e->getMessage(),
             ]);
         }
@@ -81,22 +65,22 @@ class EmpleadoController
 
     public static function modificarAPI()
     {
-        $_POST['emp_nombre'] = htmlspecialchars($_POST['emp_nombre']);
-        $id = filter_var($_POST['emp_id'], FILTER_SANITIZE_NUMBER_INT);
+        $_POST['usu_nombre'] = htmlspecialchars($_POST['usu_nombre']);
+        $id = filter_var($_POST['usu_id'], FILTER_SANITIZE_NUMBER_INT);
         try {
-            $empleado = Empleado::find($id);
-            $empleado->sincronizar($_POST);
-            $empleado->actualizar();
+            $usuario = Usuario::find($id);
+            $usuario->sincronizar($_POST);
+            $usuario->actualizar();
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
-                'mensaje' => 'Empleado modificado exitosamente',
+                'mensaje' => 'Usuario modificado exitosamente',
             ]);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'codigo' => 0,
-                'mensaje' => 'Error al modificar empleado',
+                'mensaje' => 'Error al modificar usuario',
                 'detalle' => $e->getMessage(),
             ]);
         }
@@ -104,24 +88,24 @@ class EmpleadoController
 
     public static function eliminarAPI()
     {
-        $id = filter_var($_POST['emp_id'], FILTER_SANITIZE_NUMBER_INT);
+        $id = filter_var($_POST['usu_id'], FILTER_SANITIZE_NUMBER_INT);
         try {
-            $empleado = Empleado::find($id);
-            $empleado->sincronizar([
-                'emp_situacion' => 0 
+            $usuario = Usuario::find($id);
+            $usuario->sincronizar([
+                'usu_situacion' => 0 
             ]);
 
-            $empleado->actualizar();
+            $usuario->actualizar();
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
-                'mensaje' => 'Empleado eliminado exitosamente',
+                'mensaje' => 'Usuario eliminado exitosamente',
             ]);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'codigo' => 0,
-                'mensaje' => 'Error al eliminar empleado',
+                'mensaje' => 'Error al eliminar usuario',
                 'detalle' => $e->getMessage(),
             ]);
         }
