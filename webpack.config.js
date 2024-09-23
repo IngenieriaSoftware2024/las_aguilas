@@ -9,6 +9,7 @@ module.exports = {
     'js/empleado/datatable' : './src/js/empleado/datatable.js',
     'js/empleado/registro' : './src/js/empleado/registro.js',
     'js/empleado/lista' : './src/js/empleado/lista.js',
+    'js/empleado/perfil' : './src/js/empleado/perfil.js',
     'js/clientes/clientes' : './src/js/clientes/clientes.js',
     'js/puesto/index': './src/js/puesto/index.js',
     'js/facturas/facturas' : './src/js/facturas/facturas.js',

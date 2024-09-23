@@ -47,6 +47,8 @@ $router->post('/API/cliente/eliminar', [ClienteController::class,'eliminarAPI'])
 $router->get('/empleado', [EmpleadoController::class, 'index']);
 $router->get('/empleado/registro', [EmpleadoController::class, 'index2']);
 $router->get('/empleado/lista', [EmpleadoController::class, 'index3']);
+$router->get('/empleado/perfil', [EmpleadoController::class, 'index4']);
+
 
 $router->get('/usuario', [UsuarioController::class, 'index']);
 $router->get('/API/usuario/buscar', [UsuarioController::class, 'buscarAPI']);
