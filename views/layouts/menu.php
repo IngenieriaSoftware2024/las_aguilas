@@ -86,7 +86,7 @@
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="bi bi-person-lines-fill me-2"></i>Asignar Turnos</a>
                             </li>
                             <?php endif; ?>
-                            <?php if ($_SESSION['user']['rol_nombre_ct'] == "SUPERVISOR" || $_SESSION['user']['rol_nombre_ct'] == "ADMINISTRADOR"):?>
+                            <?php if ($_SESSION['user']['rol_nombre'] == "SUPERVISOR" || $_SESSION['user']['rol_nombre'] == "ADMINISTRA"):?>
                             <!-- Administrador y Supervisor -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="bi bi-printer-fill me-2"></i>Imprimir Turnos</a>
