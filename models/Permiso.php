@@ -23,7 +23,7 @@ class Permiso extends ActiveRecord
     
     public static function obtenerPermisosConQuery()
     {
-        $sql = "SELECT p.per_id, u.usu_nombre, r.rol_nombre 
+        $sql = "SELECT p.per_id, u.usu_nombre, r.rol_nombre, rol_situacion 
 FROM permiso p
 JOIN usuario u ON p.per_usuario = u.usu_id
 JOIN rol r ON p.per_rol = r.rol_id;"; 

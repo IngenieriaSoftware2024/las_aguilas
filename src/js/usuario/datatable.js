@@ -14,7 +14,7 @@ btnModificar.disabled = true;
 btnCancelar.parentElement.style.display = 'none';
 btnCancelar.disabled = true;
 
-let usuariosData = []; 
+let usuariosData = [];
 
 const cargarEmpleadosActivos = async () => {
     try {
@@ -28,7 +28,7 @@ const cargarEmpleadosActivos = async () => {
 
         empleadosActivos.forEach(empleado => {
             const li = document.createElement('li');
-            li.textContent = ${empleado.emp_nombre} - ACTIVO;
+            li.textContent = `${empleado.emp_nombre} - ACTIVO`;
             listaEmpleados.appendChild(li);
         });
     } catch (error) {
@@ -54,9 +54,9 @@ const guardar = async (e) => {
             body
         };
         const respuesta = await fetch(url, config);
-        
+
         if (!respuesta.ok) {
-            const errorText = await respuesta.text(); // Obtener el texto de error
+            const errorText = await respuesta.text();
             console.error('Error en la respuesta del servidor:', errorText);
             throw new Error('Error en la respuesta del servidor');
         }
@@ -85,7 +85,6 @@ const guardar = async (e) => {
         });
     }
 };
-
 
 const traerDatos = (usuario) => {
     formulario.usu_id.value = usuario.usu_id;
@@ -194,7 +193,7 @@ const eliminar = async (usu_id) => {
 };
 
 const buscar = async (e) => {
-    e && e.preventDefault();
+    if (e) e.preventDefault();
     try {
         const url = '/las_aguilas/API/usuario/buscar';
         const headers = new Headers();
@@ -206,7 +205,6 @@ const buscar = async (e) => {
         const respuesta = await fetch(url, config);
         const data = await respuesta.json();
         usuariosData = data.datos || [];
-        console.log(usuariosData)
         datatable.clear().draw();
         if (usuariosData.length > 0) {
             datatable.rows.add(usuariosData).draw();
@@ -223,7 +221,7 @@ const buscar = async (e) => {
 
 const datatable = new DataTable('#tablaUsuario', {
     language: lenguaje,
-    data: null,
+    data: [],
     columns: [
         {
             title: "No.",
@@ -246,34 +244,34 @@ const datatable = new DataTable('#tablaUsuario', {
         {
             title: "SITUACIÓN",
             data: 'usu_situacion',
-            render: (data) => data === "1" ? "ACTIVO" : data 
+            render: (data) => data === "1" ? "ACTIVO" : data
         },
         {
             title: "MODIFICAR",
             data: 'usu_id',
-            render: (data) => <button class="btn btn-warning btn-modificar" data-id="${data}">Modificar</button>
+            render: (data) => `<button class="btn btn-warning btn-modificar" data-id="${data}">Modificar</button>`
         },
         {
             title: "ELIMINAR",
             data: 'usu_id',
-            render: data => <button class="btn btn-danger btn-eliminar" data-id="${data}">Eliminar</button>
+            render: data => `<button class="btn btn-danger btn-eliminar" data-id="${data}">Eliminar</button>`
         },
     ]
 });
 
 buscar();
 
-datatable.on('click', '.btn-modificar', (e) => {
-    const usu_id = e.currentTarget.dataset.id; 
-    const usuario = usuariosData.find(usu => usu.usu_id === usu_id); 
-    if (usuario) {
-        traerDatos(usuario); 
+document.querySelector('#tablaUsuario').addEventListener('click', (e) => {
+    if (e.target.classList.contains('btn-modificar')) {
+        const usu_id = e.target.dataset.id;
+        const usuario = usuariosData.find(usu => usu.usu_id === usu_id);
+        if (usuario) {
+            traerDatos(usuario);
+        }
+    } else if (e.target.classList.contains('btn-eliminar')) {
+        const usu_id = e.target.dataset.id;
+        eliminar(usu_id);
     }
-});
-
-datatable.on('click', '.btn-eliminar', (e) => {
-    const usu_id = e.currentTarget.dataset.id; 
-    eliminar(usu_id); 
 });
 
 cargarEmpleadosActivos();
