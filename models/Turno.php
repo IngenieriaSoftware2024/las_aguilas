@@ -4,6 +4,7 @@ namespace Model;
 
 class Turno extends ActiveRecord
 {
+
     protected static $tabla = 'turnos';
     protected static $idTabla = 'turno_id';  
     protected static $columnasDB = ['turno_empleado', 'turno_puesto', 'turno_fecha_inicio', 'turno_fecha_fin', 'turno_situacion'];
@@ -16,8 +17,11 @@ class Turno extends ActiveRecord
     public $turno_situacion;
 
 
+
+
     public function __construct($args = [])
     {
+
         $this->turno_id = $args['turno_id'] ?? null;
         $this->turno_empleado = $args['turno_empleado'] ?? 0;
         $this->turno_puesto = $args['turno_puesto'] ?? 0;
@@ -49,6 +53,12 @@ class Turno extends ActiveRecord
             puestos ON turno_puesto = puesto_id
         WHERE 
             turno_situacion = 1";
+
+    }
+
+    public static function obtenerTurnosconQuery()
+    {
+        $sql = "SELECT * FROM puestos where situacion = 1";
         return self::fetchArray($sql);
     }
 
