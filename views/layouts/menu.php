@@ -35,6 +35,7 @@
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
                              <!-- ADMINISTRA -->
+                              <?php  if($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de empleados</a>
                             </li>
@@ -47,14 +48,19 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de permisos</a>
                             </li>
+                            <?php endif; ?>
                             <!-- AGENTE -->
+                            <?php  if($_SESSION['user']['rol_nombre'] == "AGENTE") : ?>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="bi bi-r-circle-fill me-2"></i>Registro de empleados</a>
                             </li>
+                            <?php endif; ?>
                             <!-- SUPERVISOR -->
+                            <?php  if($_SESSION['user']['rol_nombre'] == "SUPERVISOR") : ?>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
                             </li>
+                            <?php endif; ?>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
                             </li>

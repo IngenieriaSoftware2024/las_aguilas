@@ -26,7 +26,7 @@ class PermisoController
 
     public static function guardarAPI()
 {
-    // Verificar que 'usu_id' y 'rol_id' están presentes en la solicitud
+    
     if (!isset($_POST['usu_id']) || !isset($_POST['rol_id'])) {
         http_response_code(400);
         echo json_encode([
@@ -36,7 +36,7 @@ class PermisoController
         return;
     }
 
-    // Sanitizar los datos
+    
     $_POST['usu_id'] = htmlspecialchars($_POST['usu_id']);
     $_POST['rol_id'] = htmlspecialchars($_POST['rol_id']);
 
@@ -81,48 +81,68 @@ class PermisoController
 
     public static function modificarAPI()
     {
-        $_POST['per_usuario'] = htmlspecialchars($_POST['per_usuario']);
-        $id = filter_var($_POST['per_id'], FILTER_SANITIZE_NUMBER_INT);
+        if (!isset($_POST['per_id']) || !isset($_POST['usu_id']) || !isset($_POST['rol_id'])) {
+            http_response_code(400);
+            echo json_encode([
+                'codigo' => 0,
+                'mensaje' => 'Datos incompletos: Se requiere per_id, usu_id y rol_id',
+            ]);
+            return;
+        }
+    
+        $_POST['usu_id'] = htmlspecialchars($_POST['usu_id']);
+        $_POST['rol_id'] = htmlspecialchars($_POST['rol_id']);
+        $_POST['per_id'] = htmlspecialchars($_POST['per_id']); 
+    
         try {
-            $permiso = Permiso::find($id);
-            $permiso->sincronizar($_POST);
-            $permiso->actualizar();
+            $permiso = new Permiso($_POST);
+            $permiso->actualizar(); 
             http_response_code(200);
             echo json_encode([
                 'codigo' => 1,
-                'mensaje' => 'Permiso modificado exitosamente',
+                'mensaje' => 'Permiso modificado con éxito',
             ]);
         } catch (Exception $e) {
             http_response_code(500);
             echo json_encode([
                 'codigo' => 0,
-                'mensaje' => 'Error al modificar permiso',
-                'detalle' => $e->getMessage(),
+                'mensaje' => 'Error al modificar el permiso: ' . $e->getMessage(),
             ]);
         }
     }
+    
 
     public static function eliminarAPI()
-    {
-        $id = filter_var($_POST['per_id'], FILTER_SANITIZE_NUMBER_INT);
-        try {
-            $permiso = Permiso::find($id);
-            $permiso->sincronizar([
-                'per_situacion' => 0 
-            ]);
-            $permiso->actualizar();
-            http_response_code(200);
-            echo json_encode([
-                'codigo' => 1,
-                'mensaje' => 'Permiso eliminado exitosamente',
-            ]);
-        } catch (Exception $e) {
-            http_response_code(500);
-            echo json_encode([
-                'codigo' => 0,
-                'mensaje' => 'Error al eliminar permiso',
-                'detalle' => $e->getMessage(),
-            ]);
-        }
+{
+    if (!isset($_POST['per_id'])) {
+        http_response_code(400);
+        echo json_encode([
+            'codigo' => 0,
+            'mensaje' => 'Datos incompletos: Se requiere per_id',
+        ]);
+        return;
     }
+
+    $_POST['per_id'] = htmlspecialchars($_POST['per_id']); 
+
+    try {
+        $permiso = Permiso::find($_POST['per_id']); 
+        if (!$permiso) {
+            throw new Exception('Permiso no encontrado');
+        }
+        $permiso->eliminar(); 
+        http_response_code(200);
+        echo json_encode([
+            'codigo' => 1,
+            'mensaje' => 'Permiso eliminado con éxito',
+        ]);
+    } catch (Exception $e) {
+        http_response_code(500);
+        echo json_encode([
+            'codigo' => 0,
+            'mensaje' => 'Error al eliminar el permiso: ' . $e->getMessage(),
+        ]);
+    }
+}
+
 }
