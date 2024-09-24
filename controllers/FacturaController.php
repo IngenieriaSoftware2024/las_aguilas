@@ -20,7 +20,6 @@ class FacturaController
         $clientes = Cliente::fetchArray($sql);
 
 
-
         $router->render('factura/factura', [
             'clientes' => $clientes
         ], 'layouts/menu');

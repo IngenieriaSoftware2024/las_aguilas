@@ -11,7 +11,9 @@ class ClienteController
 {
     public static function index(Router $router)
     {
-        $router->render('clientes/cliente', []);
+        isAuth();
+        hasPermission(['ADMINISTRA']);
+        $router->render('clientes/cliente', [], 'layouts/menu');
     }
 
     public static function guardarAPI()

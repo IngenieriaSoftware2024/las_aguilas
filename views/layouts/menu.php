@@ -11,7 +11,7 @@
     <title>- Las Aguilas S.A. -</title>
 </head>
 
-<body>
+<body style="background: linear-gradient(135deg, #f5d5ae, #d8a7a7, #b88484);" >
     <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
 
         <div class="container-fluid me-5 ms-5">
@@ -28,52 +28,63 @@
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/las_aguilas/"><i class="bi bi-house-fill me-2"></i>Inicio</a>
                     </li>
-                        <!-- EMPLEADOS -->
+                    <!-- EMPLEADOS -->
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-people-fill me-2"></i>Empleados
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                             <!-- ADMINISTRA -->
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de empleados</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/usuario"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de usuarios</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de permisos</a>
-                            </li>
+                            <!-- ADMINISTRA -->
+                            <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de empleados</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/perfil"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Generación de perfiles</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/usuario"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de usuarios</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/permiso"><i class="bi bi-menu-button-wide-fill me-2"></i>Gestión de permisos</a>
+                                </li>
+                            <?php endif; ?>
                             <!-- AGENTE -->
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="bi bi-r-circle-fill me-2"></i>Registro de empleados</a>
-                            </li>
+                            <?php if ($_SESSION['user']['rol_nombre'] == "AGENTE") : ?>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/registro"><i class="bi bi-r-circle-fill me-2"></i>Registro de empleados</a>
+                                </li>
+                            <?php endif; ?>
                             <!-- SUPERVISOR -->
+                            <?php if ($_SESSION['user']['rol_nombre'] == "SUPERVISOR") : ?>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
+                                </li>
+
+                            <?php endif; ?>
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/empleado/lista"><i class="bi bi-r-circle-fill me-2"></i>Lista de empleados</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
                             </li>
-                            
-                  
+
+
+
                         </ul>
                     </div>
                     <!-- ASIGNACIÓN DE TAREAS -->
                     <div class="nav-item dropdown ">
                         <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-card-checklist me-2"></i>Tareas
+                            <i class="bi bi-card-checklist me-2"></i>Tareas
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
                             <!-- Administrador -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="bi bi-person-lines-fill me-2"></i>Añadir Puesto</a>
                             </li>
-                             <!-- Administrador -->
+                            <!-- Administrador -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="bi bi-person-lines-fill me-2"></i>Asignar Turnos</a>
                             </li>
-                             <!-- Administrador y Supervisor -->
+                            <!-- Administrador y Supervisor -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="bi bi-printer-fill me-2"></i>Imprimir Turnos</a>
                             </li>
@@ -81,31 +92,40 @@
                             <li>                                                                                                    
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="bi bi-file-bar-graph-fill me-2"></i>Estadistica Turnos</a>
                             </li>
-                        </ul>
-                    </div>
-                     <!-- CLIENTES -->
-                    <div class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-badge m-2"></i>Clientes
-                        </a>
-                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <!-- Administrador y Supervisor -->
                             <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-person-plus-fill me-2"></i>Ingresar Cliente</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-eye-fill me-2"></i>Ver Contrato</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="nav-item dropdown ">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-file-richtext-fill me-2"></i>Facturas
-                        </a>
-                        <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                            <a class="dropdown-item nav-link text-white " href="/las_aguilas/factura"><i class="bi bi-file-text me-2"></i>Generar Facturas</a>
-                            </li>
-                        </ul>
-                    </div>
+                    <!-- CLIENTES -->
+                    <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
+                        <div class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-badge m-2"></i>Clientes
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-person-plus-fill me-2"></i>Ingresar Cliente</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-eye-fill me-2"></i>Ver Contrato</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <?php endif ?>;
+                        <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
+
+                            <div class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                    <i class="bi bi-file-richtext-fill me-2"></i>Facturas
+                                </a>
+                                <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/factura"><i class="bi bi-file-text me-2"></i>Generar Facturas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <?php endif ?>;
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
                     <!-- Ruta relativa desde el archivo donde se incluye menu.php -->

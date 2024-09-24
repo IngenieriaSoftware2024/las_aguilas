@@ -132,21 +132,28 @@ const inicializarDataTable = (data) => {
             llenarFormulario(permiso);
         } else if (e.target.classList.contains('btn-eliminar')) {
             const per_id = e.target.getAttribute('data-id');
-            eliminarPermiso(per_id);
+            const permiso = permisosData.find(p => p.per_id == per_id); // Encuentra el objeto permiso completo
+            eliminarPermiso(permiso); // Pasa el objeto completo
         }
     });
 };
 
 const llenarFormulario = (permiso) => {
-    console.log(permiso);
-    formulario.listaRoles.value = permiso.rol_nombre; 
-    formulario.listaUsuarios.value = permiso.usu_nombre; 
+    const listaUsuarios = document.getElementById('listaUsuarios');
+    const listaRoles = document.getElementById('listaRoles');
+
+    listaUsuarios.value = permiso.usu_id;  
+    listaRoles.value = permiso.rol_id;  
+    formulario.per_id.value = permiso.per_id;
+
     btnGuardar.parentElement.style.display = 'none';
     btnModificar.parentElement.style.display = '';
     btnCancelar.parentElement.style.display = '';
     btnModificar.disabled = false;
     btnCancelar.disabled = false;
 };
+
+
 
 const modificarPermiso = async (e) => {
     e.preventDefault();
@@ -181,23 +188,50 @@ const modificarPermiso = async (e) => {
     }
 };
 
-const eliminarPermiso = async (per_id) => {
-    try {
-        const url = '/las_aguilas/API/permiso/eliminar';
-        const respuesta = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ per_id })
-        });
-        const data = await respuesta.json();
-        const { codigo, mensaje } = data;
-        let icon = codigo === 1 ? 'success' : 'error';
-        if (codigo === 1) {
-            buscarPermisos();
+const eliminarPermiso = async (permiso) => {
+    console.log(permiso);
+    let confirmacion = await Swal.fire({
+        icon: 'question',
+        title: 'Confirmación',
+        text: '¿Está seguro que desea eliminar este permiso?',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'No, cancelar',
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+    });
+
+    if (confirmacion.isConfirmed) {
+        try {
+            const body = new FormData();
+            body.append('per_id', permiso.per_id);
+          
+            const url = "/las_aguilas/API/permiso/eliminar";
+            const config = {
+                method: 'POST',
+                body
+            };
+            console.log(body);
+            const respuesta = await fetch(url, config);
+            const data = await respuesta.json();
+            const { codigo, mensaje, detalle } = data;
+
+            let icon = 'info';
+            if (codigo === 1) {
+                icon = 'success';
+                buscarPermisos();
+            } else {
+                icon = 'error';
+                console.log(detalle);
+            }
+
+            Toast.fire({
+                icon: icon,
+                title: mensaje
+            });
+        } catch (error) {
+            console.log(error);
         }
-        Toast.fire({ icon, title: mensaje });
-    } catch (error) {
-        console.log(error);
     }
 };
 
