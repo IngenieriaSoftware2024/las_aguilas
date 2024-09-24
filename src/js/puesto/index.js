@@ -54,8 +54,8 @@ const datatable = new DataTable('#tablaPuestos', {
             orderable: false,
             render: (data, type, row, meta) => {
                 let html = `
-                <button class='btn btn-warning modificar' data-puesto_id="${data}" data-puesto_nombre="${row.puesto_nombre}" data-puesto_descripcion="${row.puesto_descripcion}" data-puesto_salario="${row.puesto_salario}" data-puesto_direccion="${row.puesto_direccion}" data-puesto_cliente="${row.puesto_cliente}" data-saludo="hola mundo"><i class='bi bi-pencil-square'></i>Modificar</button>
-                <button class='btn btn-danger eliminar' data-puesto_id="${data}">Eliminar</button>
+                <button class='btn btn-warning modificar' data-puesto_id="${data}" data-puesto_nombre="${row.puesto_nombre}" data-puesto_descripcion="${row.puesto_descripcion}" data-puesto_salario="${row.puesto_salario}" data-puesto_direccion="${row.puesto_direccion}" data-puesto_cliente="${row.puesto_cliente}" data-saludo="hola mundo"><i class='bi bi-pencil-square'>Registrar</i></button>
+                <button class='btn btn-danger eliminar' data-puesto_id="${data}"><i class="bi bi-trash"></i>Eliminar</button>
 
                 `
                 return html;
