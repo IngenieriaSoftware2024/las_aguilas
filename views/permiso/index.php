@@ -1,7 +1,7 @@
 <div class="container my-4">
     <h2 class="mb-4">Asignar Permiso</h2>
     <form id="formPermiso">
-    <input type="hidden" name="per_id" value="">
+    <input type="hidden" name="per_id" id="per_id" value="1">
 
         <div class="mb-3">
             <label for="rol_id" class="form-label">Seleccione Rol</label>
