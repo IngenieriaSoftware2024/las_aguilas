@@ -81,6 +81,9 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="bi bi-person-lines-fill me-2"></i>Añadir Puesto</a>
                             </li>
+                            <li>                                                                                                    
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos/lista"><i class="bi bi-list-check me-2"></i>LISTA PUESTOS</a>
+                            </li>
                             <!-- Administrador -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="bi bi-person-lines-fill me-2"></i>Asignar Turnos</a>
@@ -98,7 +101,7 @@
                             </li> -->
                             <?php endif; ?>
                             <li>                                                                                                    
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/lista"><i class="bi bi-file-bar-graph-fill me-2"></i>LISTA</a>
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/lista"><i class="bi bi-list-check me-2"></i>LISTA TURNOS</a>
                             </li>
                         </ul>
                     </div>

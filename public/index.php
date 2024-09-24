@@ -98,6 +98,7 @@ $router->get('/API/rol/buscar', [RolController::class, 'buscarAPI']);
 
 // Rutas de Puestos
 $router->get('/puestos', [PuestoController::class, 'index']);
+$router->get('/puestos/lista', [PuestoController::class, 'index2']);
 $router->get('/API/puesto/buscar', [PuestoController::class, 'buscarAPI']);
 $router->post('/API/puesto/guardar', [PuestoController::class, 'guardarAPI']);
 $router->post('/API/puesto/modificar', [PuestoController::class, 'modificarAPI']);

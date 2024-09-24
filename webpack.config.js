@@ -19,6 +19,7 @@ module.exports = {
     'js/turno/estadisticas' : './src/js/turno/estadisticas.js',
     'js/login/login' : './src/js/login/login.js',
     'js/turno/lista': './src/js/turno/lista.js',
+    'js/puesto/lista': './src/js/puesto/lista.js',
   },
   output: {
     filename: '[name].js',
