@@ -1,8 +1,8 @@
-<h1 class="text-center">Gráfica de Turnos por Puesto</h1>
+<h1 class="text-center">GRÁFICA DE TURNOS POR PUESTO</h1>
 
 <div class="row justify-content-center">
-    <div class="col">
-        <button type="button" id="actualizarTurnos" class="btn btn-info w-100">Actualizar Gráfica</button>
+    <div class="col d-flex justify-content-center">
+        <button type="button" id="actualizarTurnos" class="btn btn-primary">Actualizar Gráfica</button>
     </div>
 </div>
 
