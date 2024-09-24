@@ -5,6 +5,23 @@ module.exports = {
   entry: {
     'js/app' : './src/js/app.js',
     'js/inicio' : './src/js/inicio.js',
+    'js/empleado/index' : './src/js/empleado/index.js',
+    'js/empleado/datatable' : './src/js/empleado/datatable.js',
+    'js/empleado/registro' : './src/js/empleado/registro.js',
+    'js/empleado/lista' : './src/js/empleado/lista.js',
+    'js/empleado/perfil' : './src/js/empleado/perfil.js',
+    'js/clientes/clientes' : './src/js/clientes/clientes.js',
+    'js/puesto/index': './src/js/puesto/index.js',
+    'js/facturas/facturas' : './src/js/facturas/facturas.js',
+    'js/turno/index': './src/js/turno/index.js',
+    'js/usuario/datatable' : './src/js/usuario/datatable.js',
+    'js/permiso/datatable' : './src/js/permiso/datatable.js',
+    'js/turno/estadisticas' : './src/js/turno/estadisticas.js',
+    'js/login/login' : './src/js/login/login.js',
+    'js/turno/lista': './src/js/turno/lista.js',
+    'js/puesto/lista': './src/js/puesto/lista.js',
+    'js/clientes/mapa' : './src/js/clientes/mapa.js',
+
   },
   output: {
     filename: '[name].js',

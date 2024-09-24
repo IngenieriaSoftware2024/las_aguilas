@@ -18,6 +18,7 @@ try {
     }
 
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 } catch (PDOException $e) {
     echo json_encode([
         "detalle" => $e->getMessage(),
