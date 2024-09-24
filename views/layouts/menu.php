@@ -81,13 +81,12 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="bi bi-person-lines-fill me-2"></i>Añadir Puesto</a>
                             </li>
-                            <li>                                                                                                    
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos/lista"><i class="bi bi-list-check me-2"></i>LISTA PUESTOS</a>
-                            </li>
                             <!-- Administrador -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos"><i class="bi bi-person-lines-fill me-2"></i>Asignar Turnos</a>
                             </li>
+                            <?php endif; ?>
+                            <?php if ($_SESSION['user']['rol_nombre_ct'] == "SUPERVISOR" || $_SESSION['user']['rol_nombre_ct'] == "ADMINISTRADOR"):?>
                             <!-- Administrador y Supervisor -->
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="bi bi-printer-fill me-2"></i>Imprimir Turnos</a>
@@ -96,13 +95,18 @@
                             <li>                                                                                                    
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="bi bi-file-bar-graph-fill me-2"></i>Estadistica Turnos</a>
                             </li>
-                            <!-- <li>                                                                                                    
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/lista"><i class="bi bi-file-bar-graph-fill me-2"></i>Ver Turnos</a>
-                            </li> -->
+                            
+                            <!-- Supervisor -->
+                            <li>                                                                                                    
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos/lista"><i class="bi bi-list-check me-2"></i>LISTA PUESTOS</a>
+                            </li>
                             <?php endif; ?>
+                            <?php if ($_SESSION['user']['rol_nombre'] == "AGENTE") : ?>
+                            <!-- Agente -->
                             <li>                                                                                                    
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/lista"><i class="bi bi-list-check me-2"></i>LISTA TURNOS</a>
                             </li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                     <!-- CLIENTES -->
