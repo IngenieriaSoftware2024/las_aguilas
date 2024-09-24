@@ -30,11 +30,7 @@ class Turno extends ActiveRecord
         $this->turno_situacion = $args['turno_situacion'] ?? 1;
     }
 
-    // public static function obtenerTurnosconQuery()
-    // {
-    //     $sql = "SELECT * FROM turnos where turno_situacion = 1";
-    //     return self::fetchArray($sql);
-    // }
+ 
 
     public static function obtenerTurnosconQuery()
     {
@@ -56,5 +52,4 @@ class Turno extends ActiveRecord
 
     }
 
-    
 }
