@@ -11,7 +11,7 @@
     <title>- Las Aguilas S.A. -</title>
 </head>
 
-<body style="background: linear-gradient(135deg, #f5d5ae, #d8a7a7, #b88484);" >
+<body style="background: linear-gradient(135deg, #f5d5ae, #d8a7a7, #b88484);">
     <nav class="navbar navbar-expand-lg navbar-dark  bg-dark">
 
         <div class="container-fluid me-5 ms-5">
@@ -62,12 +62,7 @@
                                 </li>
 
                             <?php endif; ?>
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
-                            </li>
-
-
-
+                           
                         </ul>
                     </div>
                     <!-- ASIGNACIÓN DE TAREAS -->
@@ -91,8 +86,8 @@
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/pdf"><i class="bi bi-printer-fill me-2"></i>Imprimir Turnos</a>
                             </li>
-                             <!-- Administrador y Supervisor -->
-                            <li>                                                                                                    
+                            <!-- Administrador y Supervisor -->
+                            <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="bi bi-file-bar-graph-fill me-2"></i>Estadistica Turnos</a>
                             </li>
                             
@@ -111,32 +106,56 @@
                     </div>
                     <!-- CLIENTES -->
                     <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
-                        <div class="nav-item dropdown ">
+                        <div class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-person-badge m-2"></i>Clientes
                             </a>
-                            <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                            <ul class="dropdown-menu dropdown-menu-dark" id="dropwdownRevision" style="margin: 0;">
                                 <li>
-                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-person-plus-fill me-2"></i>Ingresar Cliente</a>
+                                    <a class="dropdown-item nav-link text-white" href="/las_aguilas/clientes">
+                                        <i class="bi bi-person-plus-fill me-2"></i>Ingresar Cliente
+                                    </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/clientes"><i class="bi bi-eye-fill me-2"></i>Ver Contrato</a>
+                                    <a class="dropdown-item nav-link text-white" href="/las_aguilas/clientes">
+                                        <i class="bi bi-eye-fill me-2"></i>Ver Contrato
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item nav-link text-white" href="/las_aguilas/mapa">
+                                        <i class="bi bi-eye-fill me-2"></i>Ver Ubicación de Clientes
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    <?php elseif ($_SESSION['user']['rol_nombre'] == "SUPERVISOR") : ?>
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-person-badge m-2"></i>Clientes
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" id="dropwdownRevision" style="margin: 0;">
+                                <li>
+                                    <a class="dropdown-item nav-link text-white" href="/las_aguilas/mapa">
+                                        <i class="bi bi-eye-fill me-2"></i>Ver Ubicación de Clientes
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
+
+                        <div class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                <i class="bi bi-file-richtext-fill me-2"></i>Facturas
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/factura"><i class="bi bi-file-text me-2"></i>Generar Facturas</a>
                                 </li>
                             </ul>
                         </div>
                         <?php endif ?>;
-                        <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
-
-                            <div class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                                    <i class="bi bi-file-richtext-fill me-2"></i>Facturas
-                                </a>
-                                <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
-                                    <a class="dropdown-item nav-link text-white " href="/las_aguilas/factura"><i class="bi bi-file-text me-2"></i>Generar Facturas</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <?php endif ?>;
                 </ul>
                 <div class="col-lg-1 d-grid mb-lg-0 mb-2">
                     <!-- Ruta relativa desde el archivo donde se incluye menu.php -->

@@ -16,6 +16,13 @@ class ClienteController
         $router->render('clientes/cliente', [], 'layouts/menu');
     }
 
+    public static function index3(Router $router)
+    {   
+        isAuth();
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
+        $router->render('clientes/mapa', [], 'layouts/menu');
+    }
+
     public static function guardarAPI()
     {
         $mensaje = '';
@@ -199,6 +206,19 @@ class ClienteController
                 'mensaje' => 'Error al eliminar el Cliente',
                 'detalle' => $e->getMessage(),
             ]);
+        }
+    }
+
+    public static function mapaAPI()
+    {
+        $sql = "SELECT * FROM clientes WHERE cliente_situacion = 1";
+
+        try {
+            $envios = Cliente::fetchArray($sql);
+            echo json_encode($envios);
+            exit;
+        } catch (Exception $e) {
+            return [];
         }
     }
 }
