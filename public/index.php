@@ -100,6 +100,7 @@ $router->get('/API/rol/buscar', [RolController::class, 'buscarAPI']);
 
 // Rutas de Puestos
 $router->get('/puestos', [PuestoController::class, 'index']);
+$router->get('/puestos/lista', [PuestoController::class, 'index2']);
 $router->get('/API/puesto/buscar', [PuestoController::class, 'buscarAPI']);
 $router->post('/API/puesto/guardar', [PuestoController::class, 'guardarAPI']);
 $router->post('/API/puesto/modificar', [PuestoController::class, 'modificarAPI']);
@@ -107,6 +108,7 @@ $router->post('/API/puesto/eliminar', [PuestoController::class, 'eliminarAPI']);
 
 // Rutas de Turnos
 $router->get('/turnos', [TurnoController::class, 'index']);
+$router->get('/turnos/lista', [TurnoController::class, 'index2']);
 $router->get('/API/turno/buscar', [TurnoController::class, 'buscarAPI']);
 $router->post('/API/turno/guardar', [TurnoController::class, 'guardarAPI']);
 $router->post('/API/turno/modificar', [TurnoController::class, 'modificarAPI']);

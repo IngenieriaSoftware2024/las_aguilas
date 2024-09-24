@@ -29,11 +29,11 @@ const datatable = new DataTable('#tablaTurnos', {
         },
         {
             title: 'Empleado',
-            data: 'turno_empleado'
+            data: 'emp_nombre'
         },
         {
             title: 'Puesto',
-            data: 'turno_puesto'
+            data: 'puesto_nombre'
         },
         {
             title: 'Fecha Inicio',

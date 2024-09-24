@@ -19,6 +19,28 @@ class PuestoController
         ], 'layouts/menu');
     }
     
+    public static function index2(Router $router)
+    {
+        isAuth();
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
+        $puestos = Puesto::find(2);
+
+        $router->render('puestos/lista', [
+            'puestos' => $puestos
+        ], 'layouts/menu');
+    }
+
+    // public static function index2(Router $router)
+    // {
+    //     isAuth();
+    //     hasPermission(['ADMINISTRA', 'SUPERVISOR', 'AGENTE']);
+
+    //     $turnos = Turno::find(2);
+    //     $router->render('turnos/lista', [
+    //         'turnos' => $turnos
+    //     ],  'layouts/menu');
+    // }
+    
 
     public static function guardarAPI()
     {

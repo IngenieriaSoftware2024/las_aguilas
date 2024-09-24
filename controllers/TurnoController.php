@@ -11,15 +11,25 @@ class TurnoController
     public static function index(Router $router)
     {
         isAuth();
-        hasPermission(['ADMINISTRA']);
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
 
         $turnos = Turno::find(2);
         $router->render('turnos/index', [
             'turnos' => $turnos
         ],  'layouts/menu');
     }
-    
 
+    public static function index2(Router $router)
+    {
+        isAuth();
+        hasPermission(['AGENTE']);
+
+        $turnos = Turno::find(2);
+        $router->render('turnos/lista', [
+            'turnos' => $turnos
+        ],  'layouts/menu');
+    }
+    
     public static function guardarAPI()
     {
         $_POST['turno_empleado'] = filter_var($_POST['turno_empleado'], FILTER_SANITIZE_NUMBER_INT);

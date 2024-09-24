@@ -45,7 +45,7 @@ const datatable = new DataTable('#tablaPuestos', {
         },
         {
             title: 'Cliente',
-            data: 'puesto_cliente'
+            data: 'cliente_nombre'
         },
         {
             title: 'Acciones',
