@@ -10,7 +10,7 @@ class ReporteController {
     public static function pdf(Router $router)
     {
         isAuth();
-        hasPermission(['ADMINISTRA']);
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
         $mpdf = new Mpdf(
             [
                 'default_font_size' => '12',

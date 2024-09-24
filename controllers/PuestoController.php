@@ -22,7 +22,7 @@ class PuestoController
     public static function index2(Router $router)
     {
         isAuth();
-        hasPermission(['ADMINISTRA', 'SUPERVISOR', 'AGENTE']);
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
         $puestos = Puesto::find(2);
 
         $router->render('puestos/lista', [

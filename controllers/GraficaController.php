@@ -13,7 +13,7 @@ class GraficaController {
          
 
         isAuth();
-        hasPermission(['ADMINISTRA']);
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
         $permisos = Permiso::find(2);
 
         $router->render('turnos/estadisticas', [

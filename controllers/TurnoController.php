@@ -11,7 +11,7 @@ class TurnoController
     public static function index(Router $router)
     {
         isAuth();
-        hasPermission(['ADMINISTRA']);
+        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
 
         $turnos = Turno::find(2);
         $router->render('turnos/index', [
@@ -22,7 +22,7 @@ class TurnoController
     public static function index2(Router $router)
     {
         isAuth();
-        hasPermission(['ADMINISTRA', 'SUPERVISOR', 'AGENTE']);
+        hasPermission(['AGENTE']);
 
         $turnos = Turno::find(2);
         $router->render('turnos/lista', [
