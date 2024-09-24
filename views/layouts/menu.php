@@ -77,6 +77,7 @@
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-dark " id="dropwdownRevision" style="margin: 0;">
                             <!-- Administrador -->
+                            <?php if ($_SESSION['user']['rol_nombre'] == "ADMINISTRA") : ?>
                             <li>
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/puestos"><i class="bi bi-person-lines-fill me-2"></i>Añadir Puesto</a>
                             </li>
@@ -92,9 +93,12 @@
                             <li>                                                                                                    
                                 <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="bi bi-file-bar-graph-fill me-2"></i>Estadistica Turnos</a>
                             </li>
-                            <!-- Administrador y Supervisor -->
-                            <li>
-                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/estadisticas"><i class="ms-lg-0 ms-2 bi bi-plus-circle me-2"></i>Estadistica Turnos</a>
+                            <!-- <li>                                                                                                    
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/lista"><i class="bi bi-file-bar-graph-fill me-2"></i>Ver Turnos</a>
+                            </li> -->
+                            <?php endif; ?>
+                            <li>                                                                                                    
+                                <a class="dropdown-item nav-link text-white " href="/las_aguilas/turnos/lista"><i class="bi bi-file-bar-graph-fill me-2"></i>LISTA</a>
                             </li>
                         </ul>
                     </div>

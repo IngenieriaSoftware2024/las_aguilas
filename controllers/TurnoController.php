@@ -18,8 +18,18 @@ class TurnoController
             'turnos' => $turnos
         ],  'layouts/menu');
     }
-    
 
+    public static function index2(Router $router)
+    {
+        isAuth();
+        hasPermission(['ADMINISTRA', 'SUPERVISOR', 'AGENTE']);
+
+        $turnos = Turno::find(2);
+        $router->render('turnos/lista', [
+            'turnos' => $turnos
+        ],  'layouts/menu');
+    }
+    
     public static function guardarAPI()
     {
         $_POST['turno_empleado'] = filter_var($_POST['turno_empleado'], FILTER_SANITIZE_NUMBER_INT);
