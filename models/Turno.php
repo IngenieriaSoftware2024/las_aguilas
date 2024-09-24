@@ -56,10 +56,10 @@ class Turno extends ActiveRecord
 
     }
 
-    public static function obtenerTurnosconQuery()
-    {
-        $sql = "SELECT * FROM puestos where situacion = 1";
-        return self::fetchArray($sql);
-    }
+    // public static function obtenerTurnosconQuery()
+    // {
+    //     $sql = "SELECT * FROM puestos where situacion = 1";
+    //     return self::fetchArray($sql);
+    // }
 
 }
