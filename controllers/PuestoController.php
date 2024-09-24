@@ -13,10 +13,10 @@ class PuestoController
         isAuth();
         hasPermission(['ADMINISTRA']);
         $puestos = Puesto::find(2);
-        
+
         $router->render('puestos/index', [
             'puestos' => $puestos
-        ], 'layouts/menu');;
+        ], 'layouts/menu');
     }
     
 

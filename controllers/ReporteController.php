@@ -9,7 +9,8 @@ use MVC\Router;
 class ReporteController {
     public static function pdf(Router $router)
     {
-        
+        isAuth();
+        hasPermission(['ADMINISTRA']);
         $mpdf = new Mpdf(
             [
                 'default_font_size' => '12',
@@ -26,7 +27,7 @@ class ReporteController {
 
         $html = $router->load('pdf/reporte',[
             'resultado' => $resultado
-        ]);
+        ], 'layouts/menu');
 
         $header = $router->load('pdf/header', []);
         $footer = $router->load('pdf/footer', []);

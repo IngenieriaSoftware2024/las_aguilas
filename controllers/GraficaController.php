@@ -5,13 +5,23 @@ namespace Controllers;
 use Exception;
 use Model\Turno;
 use MVC\Router;
+use Model\Permiso; 
 
 class GraficaController {
 
     public static function estadisticas(Router $router){
+         
+
         isAuth();
-        hasPermission(['ADMINISTRA', 'SUPERVISOR']);
-        $router->render('turnos/estadisticas', 'layouts/menu');
+        hasPermission(['ADMINISTRA']);
+        $permisos = Permiso::find(2);
+
+        $router->render('turnos/estadisticas', [
+            'permisos' => $permisos
+        ], 'layouts/menu');
+
+
+        //$router->render('turnos/estadisticas');
     }
    
     public static function turnosPorPuestoAPI(){
@@ -36,8 +46,6 @@ class GraficaController {
             ]);
         }
     }
-    
-
 }
 
 
